@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jdbc-data-source xmlns="http://xmlns.oracle.com/weblogic/jdbc-data-source" xmlns:sec="http://xmlns.oracle.com/weblogic/security" xmlns:wls="http://xmlns.oracle.com/weblogic/security/wls" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.oracle.com/weblogic/jdbc-data-source http://xmlns.oracle.com/weblogic/jdbc-data-source/1.2/jdbc-data-source.xsd">
+  <name>staffwareDs</name>
+  <jdbc-driver-params>
+    <url>jdbc:oracle:thin:@staff-db-host:1234:staff-db-sid</url>
+    <driver-name>oracle.jdbc.xa.client.OracleXADataSource</driver-name>
+    <properties>
+      <property>
+        <name>user</name>
+        <value></value>
+      </property>
+    </properties>
+    <password-encrypted></password-encrypted>
+    <use-xa-data-source-interface>true</use-xa-data-source-interface>
+  </jdbc-driver-params>
+  <jdbc-connection-pool-params>
+    <initial-capacity>1</initial-capacity>
+    <max-capacity>25</max-capacity>
+    <capacity-increment>1</capacity-increment>
+    <shrink-frequency-seconds>0</shrink-frequency-seconds>
+    <highest-num-waiters>2147483647</highest-num-waiters>
+    <connection-creation-retry-frequency-seconds>0</connection-creation-retry-frequency-seconds>
+    <connection-reserve-timeout-seconds>10</connection-reserve-timeout-seconds>
+    <test-frequency-seconds>120</test-frequency-seconds>
+    <test-connections-on-reserve>true</test-connections-on-reserve>
+    <ignore-in-use-connections-enabled>true</ignore-in-use-connections-enabled>
+    <inactive-connection-timeout-seconds>120</inactive-connection-timeout-seconds>
+    <test-table-name>SQL SELECT 1 FROM DUAL</test-table-name>
+    <login-delay-seconds>0</login-delay-seconds>
+    <statement-cache-size>100</statement-cache-size>
+    <statement-cache-type>LRU</statement-cache-type>
+    <remove-infected-connections>true</remove-infected-connections>
+    <seconds-to-trust-an-idle-pool-connection>30</seconds-to-trust-an-idle-pool-connection>
+    <statement-timeout>-1</statement-timeout>
+    <jdbc-xa-debug-level>10</jdbc-xa-debug-level>
+    <pinned-to-thread>false</pinned-to-thread>
+    <wrap-types>true</wrap-types>
+  </jdbc-connection-pool-params>
+  <jdbc-data-source-params>
+    <jndi-name>staffwareDs</jndi-name>
+    <global-transactions-protocol>TwoPhaseCommit</global-transactions-protocol>
+  </jdbc-data-source-params>
+  <jdbc-xa-params>
+    <keep-xa-conn-till-tx-complete>true</keep-xa-conn-till-tx-complete>
+    <need-tx-ctx-on-close>true</need-tx-ctx-on-close>
+    <xa-end-only-once>true</xa-end-only-once>
+    <keep-logical-conn-open-on-release>false</keep-logical-conn-open-on-release>
+    <resource-health-monitoring>true</resource-health-monitoring>
+    <recover-only-once>false</recover-only-once>
+    <xa-set-transaction-timeout>true</xa-set-transaction-timeout>
+    <xa-transaction-timeout>0</xa-transaction-timeout>
+    <rollback-local-tx-upon-conn-close>false</rollback-local-tx-upon-conn-close>
+    <xa-retry-duration-seconds>0</xa-retry-duration-seconds>
+    <xa-retry-interval-seconds>60</xa-retry-interval-seconds>
+  </jdbc-xa-params>
+</jdbc-data-source>
