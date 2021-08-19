@@ -405,7 +405,7 @@
     <name>JMSModule</name>
     <target>wlcluster</target>
     <sub-deployment>
-      <name>wlserver1</name>
+      <name>1p</name>
       <target>JMSServer1</target>
     </sub-deployment>
     <sub-deployment>
