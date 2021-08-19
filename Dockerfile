@@ -20,6 +20,9 @@ RUN $ORACLE_HOME/oracle_common/common/bin/wlst.sh -skipWLSModuleScanning contain
 # Copy across a custom config.xml, along with jdbc and jms configuration
 COPY --chown=weblogic:weblogic config ${DOMAIN_NAME}/config/
 
+# Copy across chipsconfig directory
+COPY --chown=weblogic:weblogic chipsconfig ${DOMAIN_NAME}/chipsconfig/
+
 # Set the credentials in the custom config.xml
 RUN $ORACLE_HOME/oracle_common/common/bin/wlst.sh -skipWLSModuleScanning container-scripts/set-credentials.py && \
     chmod 754 container-scripts/*.sh
