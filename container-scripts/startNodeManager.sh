@@ -8,6 +8,9 @@ fi
 DOMAIN_HOME="${ORACLE_HOME}/${DOMAIN_NAME}"
 . ${DOMAIN_HOME}/bin/setDomainEnv.sh
 
+# Restore USER_MEM_ARGS value as this is needed in the environment when starting node manager in order to pass on to managed server
+export USER_MEM_ARGS=${MEM_ARGS}
+
 # Regenerate the demo cert (which NodeManager is currently using) so that it has the correct common name (hostname)
 cd ${DOMAIN_HOME}/security
 java -Djava.security.egd=file:/dev/./urandom utils.CertGen -keyfilepass DemoIdentityPassPhrase -certfile democert -keyfile demokey
