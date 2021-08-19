@@ -7,7 +7,8 @@ ARG ADMIN_PASSWORD
 
 ENV ORACLE_HOME=/apps/oracle \
     DOMAIN_NAME=chipsdomain \
-    ADMIN_NAME=wladmin
+    ADMIN_NAME=wladmin \
+    ARTIFACTORY_BASE_URL=http://repository.aws.chdev.org:8081/artifactory
 
 WORKDIR $ORACLE_HOME
 
@@ -22,6 +23,15 @@ COPY --chown=weblogic:weblogic config ${DOMAIN_NAME}/config/
 
 # Copy across chipsconfig directory
 COPY --chown=weblogic:weblogic chipsconfig ${DOMAIN_NAME}/chipsconfig/
+
+# Download libs from artifactory
+RUN cd ${DOMAIN_NAME}/chipsconfig && \
+    curl ${ARTIFACTORY_BASE_URL}/libs-release/antlr/antlr/2.7.6/antlr-2.7.6.jar -o antlr-2.7.6.jar && \
+    curl ${ARTIFACTORY_BASE_URL}/libs-release/org/xhtmlrenderer/core-renderer/R5pre1patched/core-renderer-R5pre1patched.jar -o core-renderer.jar && \
+    curl ${ARTIFACTORY_BASE_URL}/libs-release/log4j/log4j/1.2.14/log4j-1.2.14.jar -o log4j.jar && \
+    curl ${ARTIFACTORY_BASE_URL}/local-ch-release/oracle/AQ/unknown/AQ-unknown.jar -o aqapi12.jar && \
+    curl ${ARTIFACTORY_BASE_URL}/libs-release/com/lowagie/itext/2.0.8/itext-2.0.8.jar -o itext-2.0.8.jar && \
+    curl ${ARTIFACTORY_BASE_URL}/libs-release/com/staffware/ssoRMI/11.4.1/ssoRMI-11.4.1.jar -o ssoRMI.jar
 
 # Set the credentials in the custom config.xml
 RUN $ORACLE_HOME/oracle_common/common/bin/wlst.sh -skipWLSModuleScanning container-scripts/set-credentials.py && \
