@@ -24,9 +24,12 @@ In order to use the image, a number of environment properties need to be defined
 |ADMIN_PASSWORD |The password to set for the weblogic user.  Needs to be at least 8 chars and include a number.|secret123
 |DOMAIN_CREDENTIAL|A random string to override and reset the default credential already present in the image.|kjsdgf5464fdva
 |LDAP_CREDENTIAL|A random string to override and reset the default credential already present in the image.|ldap01234
-|DB_URL|Full JDBC connection string of database|jdbc:oracle:thin:@cchips.blahblah.eu-west-2.rds.amazonaws.com:1521:chips
-|DB_USER|Database username|CHIPSDBUSER
-|DB_PASSWORD|Database passwrod|chipsdbpassword
+|DB_URL_CHIPSDS|Full JDBC connection string of CHIPS database|jdbc:oracle:thin:@chips.blahblah.eu-west-2.rds.amazonaws.com:1521:chips
+|DB_USER_CHIPSDS|Database username for CHIPS database|CHIPSDBUSER
+|DB_PASSWORD_CHIPSDS|Database password for CHIPS database|chipsdbpassword
+|DB_URL_STAFFSDS|Full JDBC connection string of CHIPS Staffware database|jdbc:oracle:thin:@chipssw.blahblah.eu-west-2.rds.amazonaws.com:1521:chipssw
+|DB_USER_STAFFDS|Database username for CHIPS Staffware database|CHIPSSWDBUSER
+|DB_PASSWORD_STAFFDS|Database password for CHIPS Staffware database|chipsswdbpassword
 |START_ARGS|Any startup JVM arguments that should be used when starting the managed server|-Dmyarg=true -Dmyotherarg=false
 |USER_MEM_ARGS|JVM arguments for setting the GC and memory settings for the managed server.  These will be included at the start of the arguments to the JVM|-XX:+UseG1GC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xms712m -Xmx712m
 |ADMIN_MEM_ARGS|JVM arguments for setting the GC and memory settings for the admin server.  These will be included at the start of the arguments to the JVM|-Djava.security.egd=file:/dev/./urandom -Xms32m -Xmx512m
@@ -37,6 +40,7 @@ In order to use the image, a number of environment properties need to be defined
 |AD_USER_BASE_DN|The base location under which users can be found via a subtree search|OU=MySection, OU=MyOrg, DC=MyDepartment, DC=local
 |AD_GROUP_BASE_DN|The base location under which groups can be found via a subtree search|OU=MySection, OU=MyOrg, DC=MyDepartment, DC=local
 |AUTO_START_NODES|A list of managed server names to auto start when the container is launched|wlserver1,wlserver2,wlserver3,wlserver4
+|TZ|The timezone to use when running WebLogic|Europe/London
 
 ## docker-compose
 docker-compose can be used to start all the required containers in one operation.
