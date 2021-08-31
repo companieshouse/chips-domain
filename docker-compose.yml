@@ -1,0 +1,69 @@
+version: "3.8"
+services:
+  wladmin:
+    hostname: wladmin
+    image: ${CHIPS_DOMAIN_IMAGE:-chips-domain:latest}
+    ports:
+      - "21010:7001"
+    volumes:
+      - type: bind
+        source: ./running-servers
+        target: /apps/oracle/chipsdomain/servers
+    networks:
+      - chips-net
+    env_file: ./chips.properties
+    entrypoint: container-scripts/startAdmin.sh
+  wlserver1:
+    hostname: wlserver1
+    image: ${CHIPS_DOMAIN_IMAGE:-chips-domain:latest}
+    ports:
+      - "21011:7001"
+    volumes:
+      - type: bind
+        source: ./running-servers
+        target: /apps/oracle/chipsdomain/servers
+    networks:
+      - chips-net
+    env_file: ./chips.properties
+    entrypoint: container-scripts/startNodeManagerAndManagedServer.sh
+  wlserver2:
+    hostname: wlserver2
+    image: ${CHIPS_DOMAIN_IMAGE:-chips-domain:latest}
+    ports:
+      - "21012:7001"
+    volumes:
+      - type: bind
+        source: ./running-servers
+        target: /apps/oracle/chipsdomain/servers
+    networks:
+      - chips-net
+    env_file: ./chips.properties
+    entrypoint: container-scripts/startNodeManagerAndManagedServer.sh
+  wlserver3:
+    hostname: wlserver3
+    image: ${CHIPS_DOMAIN_IMAGE:-chips-domain:latest}
+    ports:
+      - "21013:7001"
+    volumes:
+      - type: bind
+        source: ./running-servers
+        target: /apps/oracle/chipsdomain/servers
+    networks:
+      - chips-net
+    env_file: ./chips.properties
+    entrypoint: container-scripts/startNodeManagerAndManagedServer.sh
+  wlserver4:
+    hostname: wlserver4
+    image: ${CHIPS_DOMAIN_IMAGE:-chips-domain:latest}
+    ports:
+      - "21014:7001"
+    volumes:
+      - type: bind
+        source: ./running-servers
+        target: /apps/oracle/chipsdomain/servers
+    networks:
+      - chips-net
+    env_file: ./chips.properties
+    entrypoint: container-scripts/startNodeManagerAndManagedServer.sh
+networks:
+  chips-net: 
