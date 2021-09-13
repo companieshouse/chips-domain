@@ -18,7 +18,7 @@ To build the image, from the root of the repo run:
 **Important** The arg ADMIN_PASSWORD sets the administrator password that is used in the built image.  The password can easily be discovered simply by running `docker history chips-domain` Therefore, the password must be reset, along with other sensitive credentials when the image is actually used to start containers. That reset is handled automtically by the start scripts.
 
 ### Run time environment properties file
-In order to use the image, a number of environment properties need to be defined in a file, held locally to where the docker command is being run - for example, `cic.properties` 
+In order to use the image, a number of environment properties need to be defined in a file, held locally to where the docker command is being run - for example, `chips.properties` 
 |Property|Description  |Example
 |--|--|--
 |ADMIN_PASSWORD |The password to set for the weblogic user.  Needs to be at least 8 chars and include a number.|secret123
