@@ -20,10 +20,10 @@ echo "username=weblogic" > ${DOMAIN_HOME}/servers/${ADMIN_NAME}/security/boot.pr
 echo "password=${ADMIN_PASSWORD}" >> ${DOMAIN_HOME}/servers/${ADMIN_NAME}/security/boot.properties
 
 # Update the domain credentials to those provided by env var
-${ORACLE_HOME}/wlserver/common/bin/wlst.sh ${ORACLE_HOME}/container-scripts/set-credentials.py
+${ORACLE_HOME}/oracle_common/common/bin/wlst.sh -skipWLSModuleScanning ${ORACLE_HOME}/container-scripts/set-credentials.py
 
 # Set the jdbc connection strings and credentials
-${ORACLE_HOME}/wlserver/common/bin/wlst.sh ${ORACLE_HOME}/container-scripts/set-jdbc-details.py
+${ORACLE_HOME}/oracle_common/common/bin/wlst.sh -skipWLSModuleScanning ${ORACLE_HOME}/container-scripts/set-jdbc-details.py
 
 # Set the managed server startup arguments
 sed -i "s/@start-args@/${START_ARGS}/g" ${DOMAIN_HOME}/config/config.xml

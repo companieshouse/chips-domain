@@ -24,19 +24,30 @@ COPY --chown=weblogic:weblogic config ${DOMAIN_NAME}/config/
 # Copy across chipsconfig directory
 COPY --chown=weblogic:weblogic chipsconfig ${DOMAIN_NAME}/chipsconfig/
 
-# Download libs from artifactory
+# Download libs and ixbrl fonts from artifactory
 RUN cd ${DOMAIN_NAME}/chipsconfig && \
     curl ${ARTIFACTORY_BASE_URL}/libs-release/antlr/antlr/2.7.6/antlr-2.7.6.jar -o antlr-2.7.6.jar && \
     curl ${ARTIFACTORY_BASE_URL}/libs-release/org/xhtmlrenderer/core-renderer/R5pre1patched/core-renderer-R5pre1patched.jar -o core-renderer.jar && \
     curl ${ARTIFACTORY_BASE_URL}/libs-release/log4j/log4j/1.2.14/log4j-1.2.14.jar -o log4j.jar && \
     curl ${ARTIFACTORY_BASE_URL}/local-ch-release/oracle/AQ/unknown/AQ-unknown.jar -o aqapi12.jar && \
     curl ${ARTIFACTORY_BASE_URL}/libs-release/com/lowagie/itext/2.0.8/itext-2.0.8.jar -o itext-2.0.8.jar && \
-    curl ${ARTIFACTORY_BASE_URL}/libs-release/com/staffware/ssoRMI/11.4.1/ssoRMI-11.4.1.jar -o ssoRMI.jar
+    curl ${ARTIFACTORY_BASE_URL}/libs-release/com/staffware/ssoRMI/11.4.1/ssoRMI-11.4.1.jar -o ssoRMI.jar && \
+    cd .. && \
+    curl ${ARTIFACTORY_BASE_URL}/local-ch-release/uk/gov/companieshouse/chips-ixbrl-fonts/1.0.0/chips-ixbrl-fonts-1.0.0.tar -o chips-ixbrl-fonts.tar && \
+    tar -xvf chips-ixbrl-fonts.tar && rm chips-ixbrl-fonts.tar
 
 # Set the credentials in the custom config.xml
 RUN $ORACLE_HOME/oracle_common/common/bin/wlst.sh -skipWLSModuleScanning container-scripts/set-credentials.py && \
     chmod 754 container-scripts/*.sh
 
+# Download fop fonts and endorsed libs from artifactory and install into JRE
+USER root
+RUN cd ${JAVA_HOME}/jre/lib && \
+    curl ${ARTIFACTORY_BASE_URL}/local-ch-release/uk/gov/companieshouse/chips-fop-fonts/1.0.0/chips-fop-fonts-1.0.0.tar -o chips-fop-fonts.tar && \
+    tar -xvf chips-fop-fonts.tar && rm chips-fop-fonts.tar && \
+    mkdir -p endorsed && cd endorsed && curl ${ARTIFACTORY_BASE_URL}/libs-release/xalan/xalan/2.7.0/xalan-2.7.0.jar -o xalan-2.7.0.jar
+
+USER weblogic
 CMD ["bash"]
 
 

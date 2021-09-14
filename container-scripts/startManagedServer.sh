@@ -17,7 +17,7 @@ ${ORACLE_HOME}/wlserver/common/bin/wlst.sh ${ORACLE_HOME}/container-scripts/awai
 if [ $? -eq 0 ]; then
   echo "Admin server is running, so starting managed server"
 
-  ${ORACLE_HOME}/wlserver/common/bin/wlst.sh ${ORACLE_HOME}/container-scripts/start-managed-server.py
+  ${ORACLE_HOME}/oracle_common/common/bin/wlst.sh -skipWLSModuleScanning ${ORACLE_HOME}/container-scripts/start-managed-server.py
 else
 
   echo "Admin server is not running, or has not started within timeout"

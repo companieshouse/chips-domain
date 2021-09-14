@@ -18,7 +18,7 @@ To build the image, from the root of the repo run:
 **Important** The arg ADMIN_PASSWORD sets the administrator password that is used in the built image.  The password can easily be discovered simply by running `docker history chips-domain` Therefore, the password must be reset, along with other sensitive credentials when the image is actually used to start containers. That reset is handled automtically by the start scripts.
 
 ### Run time environment properties file
-In order to use the image, a number of environment properties need to be defined in a file, held locally to where the docker command is being run - for example, `cic.properties` 
+In order to use the image, a number of environment properties need to be defined in a file, held locally to where the docker command is being run - for example, `chips.properties` 
 |Property|Description  |Example
 |--|--|--
 |ADMIN_PASSWORD |The password to set for the weblogic user.  Needs to be at least 8 chars and include a number.|secret123
@@ -46,7 +46,6 @@ In order to use the image, a number of environment properties need to be defined
 docker-compose can be used to start all the required containers in one operation.
 
 It uses the docker-compose.yml file included in the repository to start up the following:
-- Apache container
 - WebLogic Administration server container
 - Four managed server/nodemanager containers
 
@@ -55,7 +54,7 @@ It uses the docker-compose.yml file included in the repository to start up the f
 The following steps should be taken before first starting the containers with docker-compose
 
 #### Environment variables
-In order to configure which version of the images to use when starting, there are two environment variables that can be set:
+In order to configure which version of the images to use when starting, there is an environment variable that can be set:
 |ENV VAR  | Description | Example| Default
 |--|--|--|--
 |CHIPS_DOMAIN_IMAGE  |The image repository and version to use for the chips-domain image  |12345678910.dkr.ecr.eu-west-2.amazonaws.com/chips-domain:1.0|chips-domain (latest local image)
