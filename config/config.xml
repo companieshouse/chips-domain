@@ -109,8 +109,8 @@
     </web-server>
     <listen-address>wlserver1</listen-address>
     <server-start>
-    <class-path>/apps/oracle/chipsdomain:/apps/oracle/chipsdomain/chipsconfig/antlr-2.7.6.jar:/apps/oracle/chipsdomain/chipsconfig/log4j.jar:/apps/oracle/chipsdomain/chipsconfig/aqapi12.jar:/apps/oracle/chipsdomain/chipsconfig/aqbridge.jar:/apps/oracle/chipsdomain/chipsconfig/chips_config.jar:/apps/oracle/chipsdomain/chipsconfig/ssoRMI.jar:/apps/oracle/chipsdomain/chipsconfig/rmi_config.jar:/apps/oracle/chipsdomain/chipsconfig:/apps/oracle/chipsdomain/chipsconfig/xsl:/apps/oracle/chipsdomain/chipsconfig/rtfTemplates:/apps/oracle/chipsdomain/chipsconfig/core-renderer.jar:/apps/oracle/chipsdomain/chipsconfig/iText-2.0.8.jar:/apps/oracle/chipsconfig/chips-tuxedo-library-unversioned.jar</class-path>
-    <arguments>@start-args@</arguments>
+      <class-path>/apps/oracle/chipsdomain:/apps/oracle/chipsdomain/chipsconfig/antlr-2.7.6.jar:/apps/oracle/chipsdomain/chipsconfig/log4j.jar:/apps/oracle/chipsdomain/chipsconfig/aqapi12.jar:/apps/oracle/chipsdomain/chipsconfig/aqbridge.jar:/apps/oracle/chipsdomain/chipsconfig/chips_config.jar:/apps/oracle/chipsdomain/chipsconfig/ssoRMI.jar:/apps/oracle/chipsdomain/chipsconfig/rmi_config.jar:/apps/oracle/chipsdomain/chipsconfig:/apps/oracle/chipsdomain/chipsconfig/xsl:/apps/oracle/chipsdomain/chipsconfig/rtfTemplates:/apps/oracle/chipsdomain/chipsconfig/core-renderer.jar:/apps/oracle/chipsdomain/chipsconfig/iText-2.0.8.jar:/apps/oracle/chipsconfig/chips-tuxedo-library-unversioned.jar</class-path>
+      <arguments>@start-args@</arguments>
     </server-start>
     <jta-migratable-target>
       <user-preferred-server>wlserver1</user-preferred-server>
@@ -140,8 +140,8 @@
     </web-server>
     <listen-address>wlserver2</listen-address>
     <server-start>
-    <class-path>.</class-path>
-    <arguments>@start-args@</arguments>
+      <class-path>/apps/oracle/chipsdomain:/apps/oracle/chipsdomain/chipsconfig/antlr-2.7.6.jar:/apps/oracle/chipsdomain/chipsconfig/log4j.jar:/apps/oracle/chipsdomain/chipsconfig/aqapi12.jar:/apps/oracle/chipsdomain/chipsconfig/aqbridge.jar:/apps/oracle/chipsdomain/chipsconfig/chips_config.jar:/apps/oracle/chipsdomain/chipsconfig/ssoRMI.jar:/apps/oracle/chipsdomain/chipsconfig/rmi_config.jar:/apps/oracle/chipsdomain/chipsconfig:/apps/oracle/chipsdomain/chipsconfig/xsl:/apps/oracle/chipsdomain/chipsconfig/rtfTemplates:/apps/oracle/chipsdomain/chipsconfig/core-renderer.jar:/apps/oracle/chipsdomain/chipsconfig/iText-2.0.8.jar:/apps/oracle/chipsconfig/chips-tuxedo-library-unversioned.jar</class-path>
+      <arguments>@start-args@</arguments>
     </server-start>
     <jta-migratable-target>
       <user-preferred-server>wlserver2</user-preferred-server>
@@ -171,8 +171,8 @@
     </web-server>
     <listen-address>wlserver3</listen-address>
     <server-start>
-    <class-path>.</class-path>
-    <arguments>@start-args@</arguments>
+      <class-path>/apps/oracle/chipsdomain:/apps/oracle/chipsdomain/chipsconfig/antlr-2.7.6.jar:/apps/oracle/chipsdomain/chipsconfig/log4j.jar:/apps/oracle/chipsdomain/chipsconfig/aqapi12.jar:/apps/oracle/chipsdomain/chipsconfig/aqbridge.jar:/apps/oracle/chipsdomain/chipsconfig/chips_config.jar:/apps/oracle/chipsdomain/chipsconfig/ssoRMI.jar:/apps/oracle/chipsdomain/chipsconfig/rmi_config.jar:/apps/oracle/chipsdomain/chipsconfig:/apps/oracle/chipsdomain/chipsconfig/xsl:/apps/oracle/chipsdomain/chipsconfig/rtfTemplates:/apps/oracle/chipsdomain/chipsconfig/core-renderer.jar:/apps/oracle/chipsdomain/chipsconfig/iText-2.0.8.jar:/apps/oracle/chipsconfig/chips-tuxedo-library-unversioned.jar</class-path>
+      <arguments>@start-args@</arguments>
     </server-start>
     <jta-migratable-target>
       <user-preferred-server>wlserver3</user-preferred-server>
@@ -202,8 +202,8 @@
     </web-server>
     <listen-address>wlserver4</listen-address>
     <server-start>
-    <class-path>.</class-path>
-    <arguments>@start-args@</arguments>
+      <class-path>/apps/oracle/chipsdomain:/apps/oracle/chipsdomain/chipsconfig/antlr-2.7.6.jar:/apps/oracle/chipsdomain/chipsconfig/log4j.jar:/apps/oracle/chipsdomain/chipsconfig/aqapi12.jar:/apps/oracle/chipsdomain/chipsconfig/aqbridge.jar:/apps/oracle/chipsdomain/chipsconfig/chips_config.jar:/apps/oracle/chipsdomain/chipsconfig/ssoRMI.jar:/apps/oracle/chipsdomain/chipsconfig/rmi_config.jar:/apps/oracle/chipsdomain/chipsconfig:/apps/oracle/chipsdomain/chipsconfig/xsl:/apps/oracle/chipsdomain/chipsconfig/rtfTemplates:/apps/oracle/chipsdomain/chipsconfig/core-renderer.jar:/apps/oracle/chipsdomain/chipsconfig/iText-2.0.8.jar:/apps/oracle/chipsconfig/chips-tuxedo-library-unversioned.jar</class-path>
+      <arguments>@start-args@</arguments>
     </server-start>
     <jta-migratable-target>
       <user-preferred-server>wlserver4</user-preferred-server>
