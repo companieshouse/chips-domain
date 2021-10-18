@@ -42,6 +42,14 @@ In order to use the image, a number of environment properties need to be defined
 |AUTO_START_NODES|A list of managed server names to auto start when the container is launched|wlserver1,wlserver2,wlserver3,wlserver4
 |TZ|The timezone to use when running WebLogic|Europe/London
 
+Optionally, there are a number of tuxedo related properties that can be defined in order to provide WebLogic Tuxedo Connector (WTC) services:
+|Property|Description  |Example
+|--|--|--
+|TUX_WL_NODE_COUNT|Weblogic instance count. A WTCServer resource will be created for each instance, with the 1st targeted at wlserver1, and 2nd at wlserver2 etc|`TUX_WL_NODE_COUNT=4`
+|TUX_LOCAL_AP_N|Local access points - where N is a unique id to allow for multiple entries. This takes the form: `<unique name>=<local ap name>|<local port>`. If TUX_WL_NODE_COUNT is greater than 1 then `<local ap name>` will be suffixed with an index, starting at 1, and all config will be replicated for each WL instance. Otherwise it will be used without a suffix. |`TUX_LOCAL_AP_0=CHIPS_EF_BATCH0_TUX|7075`
+|TUX_REMOTE_AP_N|Remote access points - where N is a unique id to allow for multiple entries. This takes the form: `<unique name>=<remote name>|<local ap name>|<connection policy>|<remote address>`. |`TUX_REMOTE_AP_0=CHIPS_TUX_TO_CHIPS|CHIPS_EF_BATCH0_TUX|INCOMING_ONLY|//1.1.1.1:1`
+
+
 ## docker-compose
 docker-compose can be used to start all the required containers in one operation.
 
