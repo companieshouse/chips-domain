@@ -49,7 +49,7 @@ Optionally, there are a number of tuxedo related properties that can be defined 
 |TUX_LOCAL_AP_N|Local access points - where N is a unique id to allow for multiple entries. This takes the form: `<unique name>=<local ap name>\|<local port>`. If TUX_WL_NODE_COUNT is greater than 1 then `<local ap name>` will be suffixed with an index, starting at 1, and all config will be replicated for each WL instance. Otherwise it will be used without a suffix. |TUX_LOCAL_AP_0=CHIPS_EF_BATCH0_TUX\|7075
 |TUX_REMOTE_AP_N|Remote access points - where N is a unique id to allow for multiple entries. This takes the form: `<unique name>=<remote name>\|<local ap name>\|<connection policy>\|<remote address>`. |TUX_REMOTE_AP_0=CHIPS_TUX_TO_CHIPS\|CHIPS_EF_BATCH0_TUX\|INCOMING_ONLY\|//1.1.1.1:1
 |TUX_EXPORT_N|Exported services - where N is a unique id to allow for multiple entries. This takes the form: `<unique name>=<local service name>\|<remote service name>\|<local ap name>\|<ejb>`. |TUX_EXPORT_0=ONLINE_SERVICES\|ONLINE_SERVICES\|CHIPS_EF_BATCH0_TUX\|tuxedo.services.OnlineServiceHome
-|TUX_IMPORT_N|Imported services - where N is a unique id to allow for multiple entries. This takes the form: `<unique name>=<service name>\|<local ap name>\|<remote ap names>`.|TUX_IMPORT_0=CABS_Ord\|CHIPS_EF_BATCH0_TUX\|CHIPS_TUX_FROM_CHIPS0,CHIPS_TUX_FROM_CHIPS1
+|TUX_IMPORT_N|Imported services - where N is a unique id to allow for multiple entries. This takes the form: `<unique name>=<local service name>\|<remote service name>\|<local ap name>\|<remote ap names>`.|TUX_IMPORT_0=CABS_Ord\|CABS_Ord\|CHIPS_EF_BATCH0_TUX\|CHIPS_TUX_FROM_CHIPS0,CHIPS_TUX_FROM_CHIPS1
 
 
 ## docker-compose
