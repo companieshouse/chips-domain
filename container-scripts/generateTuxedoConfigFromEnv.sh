@@ -13,10 +13,10 @@
 #export TUX_LOCAL_AP_0="CHIPS_EF_BATCH0_TUX|7075"
 
 # Remote access points
-# <unique name>=<remote name>|<local ap name>|<connection policy>|<remote address>
-#export TUX_REMOTE_AP_0="CHIPS_TUX_TO_CHIPS|CHIPS_EF_BATCH0_TUX|INCOMING_ONLY|//1.1.1.1:1"
-#export TUX_REMOTE_AP_1="CHIPS_TUX_FROM_CHIPS0|CHIPS_EF_BATCH0_TUX|ON_STARTUP|//chips-tux-proxy0.development.heritage.aws.internal:21076"
-#export TUX_REMOTE_AP_2="CHIPS_TUX_FROM_CHIPS1|CHIPS_EF_BATCH0_TUX|ON_STARTUP|//chips-tux-proxy1.development.heritage.aws.internal:21076"
+# <unique name>=<remote ap local name>|<remote ap remote name>|<local ap name>|<connection policy>|<remote address>
+#export TUX_REMOTE_AP_0="CHIPS_TUX_TO_CHIPS|CHIPS_TUX_TO_CHIPS|CHIPS_EF_BATCH0_TUX|INCOMING_ONLY|//1.1.1.1:1"
+#export TUX_REMOTE_AP_1="CHIPS_TUX_FROM_CHIPS0|CHIPS_TUX_FROM_CHIPS0|CHIPS_EF_BATCH0_TUX|ON_STARTUP|//chips-tux-proxy0.development.heritage.aws.internal:21076"
+#export TUX_REMOTE_AP_2="CHIPS_TUX_FROM_CHIPS1|CHIPS_TUX_FROM_CHIPS1|CHIPS_EF_BATCH0_TUX|ON_STARTUP|//chips-tux-proxy1.development.heritage.aws.internal:21076"
 
 # Exported services
 # <unique name>=<local service name>|<remote service name>|<local ap name>|<ejb>
@@ -76,7 +76,7 @@ do
   REMOTE_APS=$(env | sort | grep "^TUX_REMOTE_AP_")
   for REMOTE_AP in ${REMOTE_APS};
   do
-    while IFS='|' read -r REMOTE_AP_NAME LOCAL_AP_NAME CONN_POLICY ADDRESS;
+    while IFS='|' read -r REMOTE_AP_LOCAL_NAME REMOTE_AP_REMOTE_NAME LOCAL_AP_NAME CONN_POLICY ADDRESS;
     do
 
       if [ ${TUX_WL_NODE_COUNT} -gt 1 ]; then
@@ -84,9 +84,9 @@ do
       fi
     
       echo "    <wtc-remote-tux-dom>"
-      echo "      <name>${REMOTE_AP_NAME}</name>"
-      echo "      <access-point>${REMOTE_AP_NAME}</access-point>"
-      echo "      <access-point-id>${REMOTE_AP_NAME}</access-point-id>"
+      echo "      <name>${REMOTE_AP_LOCAL_NAME}</name>"
+      echo "      <access-point>${REMOTE_AP_LOCAL_NAME}</access-point>"
+      echo "      <access-point-id>${REMOTE_AP_REMOTE_NAME}</access-point-id>"
       echo "      <connection-policy>${CONN_POLICY}</connection-policy>"
       echo "      <local-access-point>${LOCAL_AP_NAME}</local-access-point>"
       echo "      <nw-addr>${ADDRESS}</nw-addr>"
