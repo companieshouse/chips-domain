@@ -20,7 +20,7 @@ To build the image, from the root of the repo run:
 ### Run time environment properties file
 In order to use the image, a number of environment properties need to be defined in a file, held locally to where the docker command is being run - for example, `chips.properties` 
 |Property|Description  |Example
-|--|--|--
+|--|----|--
 |ADMIN_PASSWORD |The password to set for the weblogic user.  Needs to be at least 8 chars and include a number.|secret123
 |DOMAIN_CREDENTIAL|A random string to override and reset the default credential already present in the image.|kjsdgf5464fdva
 |LDAP_CREDENTIAL|A random string to override and reset the default credential already present in the image.|ldap01234
@@ -41,6 +41,16 @@ In order to use the image, a number of environment properties need to be defined
 |AD_GROUP_BASE_DN|The base location under which groups can be found via a subtree search|OU=MySection, OU=MyOrg, DC=MyDepartment, DC=local
 |AUTO_START_NODES|A list of managed server names to auto start when the container is launched|wlserver1,wlserver2,wlserver3,wlserver4
 |TZ|The timezone to use when running WebLogic|Europe/London
+
+Optionally, there are a number of tuxedo related properties that can be defined in order to provide WebLogic Tuxedo Connector (WTC) services:
+|Property|Description  |Example
+|--|----|--
+|TUX_WL_NODE_COUNT|Weblogic instance count. A WTCServer resource will be created for each instance, with the 1st targeted at wlserver1, and 2nd at wlserver2 etc|TUX_WL_NODE_COUNT=4
+|TUX_LOCAL_AP_N|Local access points - where N is a unique id to allow for multiple entries. This takes the form: `<unique name>=<local ap name>\|<local port>`. If TUX_WL_NODE_COUNT is greater than 1 then `<local ap name>` will be suffixed with an index, starting at 1, and all config will be replicated for each WL instance. Otherwise it will be used without a suffix. |TUX_LOCAL_AP_0=CHIPS_EF_BATCH0_TUX\|7075
+|TUX_REMOTE_AP_N|Remote access points - where N is a unique id to allow for multiple entries. This takes the form: `<unique name>=<remote ap local name>\|<remote ap remote name>\|<local ap name>\|<connection policy>\|<remote address>`. |TUX_REMOTE_AP_0=CHIPS_TUX_TO_CHIPS\|CHIPS_TUX_TO_CHIPS\|CHIPS_EF_BATCH0_TUX\|INCOMING_ONLY\|//1.1.1.1:1
+|TUX_EXPORT_N|Exported services - where N is a unique id to allow for multiple entries. This takes the form: `<unique name>=<local service name>\|<remote service name>\|<local ap name>\|<ejb>`. |TUX_EXPORT_0=ONLINE_SERVICES\|ONLINE_SERVICES\|CHIPS_EF_BATCH0_TUX\|tuxedo.services.OnlineServiceHome
+|TUX_IMPORT_N|Imported services - where N is a unique id to allow for multiple entries. This takes the form: `<unique name>=<local service name>\|<remote service name>\|<local ap name>\|<remote ap names>`.|TUX_IMPORT_0=CABS_Ord\|CABS_Ord\|CHIPS_EF_BATCH0_TUX\|CHIPS_TUX_FROM_CHIPS0,CHIPS_TUX_FROM_CHIPS1
+
 
 ## docker-compose
 docker-compose can be used to start all the required containers in one operation.

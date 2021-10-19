@@ -78,6 +78,7 @@
     <security-interop-mode>default</security-interop-mode>
     <two-phase-enabled>true</two-phase-enabled>
   </jta>
+@tuxedo-config@
   <server>
     <name>wladmin</name>
     <ssl>
