@@ -30,15 +30,15 @@
 #export TUX_EXPORT_7="STEM_READ_FUNC5|STEM_READ_FUNC5|CHIPS_EF_BATCH0_TUX|tuxedo.services.ChipsReadFunctionHome"
 
 # Imported services
-# <unique name>=<service name>|<local ap name>|<remote ap names>
-#export TUX_IMPORT_0="CABS_Ord|CHIPS_EF_BATCH0_TUX|CHIPS_TUX_FROM_CHIPS0,CHIPS_TUX_FROM_CHIPS1"
-#export TUX_IMPORT_1="CABS_Ord|CHIPS_EF_BATCH0_TUX|CHIPS_TUX_FROM_CHIPS1,CHIPS_TUX_FROM_CHIPS0"
-#export TUX_IMPORT_2="IMAGE_ORD|CHIPS_EF_BATCH0_TUX|CHIPS_TUX_FROM_CHIPS0,CHIPS_TUX_FROM_CHIPS1"
-#export TUX_IMPORT_3="IMAGE_ORD|CHIPS_EF_BATCH0_TUX|CHIPS_TUX_FROM_CHIPS1,CHIPS_TUX_FROM_CHIPS0"
-#export TUX_IMPORT_4="ewfFormResponse|CHIPS_EF_BATCH0_TUX|CHIPS_TUX_FROM_CHIPS0,CHIPS_TUX_FROM_CHIPS1"
-#export TUX_IMPORT_5="ewfFormResponse|CHIPS_EF_BATCH0_TUX|CHIPS_TUX_FROM_CHIPS1,CHIPS_TUX_FROM_CHIPS0"
-#export TUX_IMPORT_6="xmlFormResponse|CHIPS_EF_BATCH0_TUX|CHIPS_TUX_FROM_CHIPS0,CHIPS_TUX_FROM_CHIPS1"
-#export TUX_IMPORT_7="xmlFormResponse|CHIPS_EF_BATCH0_TUX|CHIPS_TUX_FROM_CHIPS1,CHIPS_TUX_FROM_CHIPS0"
+# <unique name>=<local service name>|<remote service name>|<local ap name>|<remote ap names>
+#export TUX_IMPORT_0="CABS_Ord|CABS_Ord|CHIPS_EF_BATCH0_TUX|CHIPS_TUX_FROM_CHIPS0,CHIPS_TUX_FROM_CHIPS1"
+#export TUX_IMPORT_1="CABS_Ord|CABS_Ord|CHIPS_EF_BATCH0_TUX|CHIPS_TUX_FROM_CHIPS1,CHIPS_TUX_FROM_CHIPS0"
+#export TUX_IMPORT_2="IMAGE_ORD|IMAGE_ORD|CHIPS_EF_BATCH0_TUX|CHIPS_TUX_FROM_CHIPS0,CHIPS_TUX_FROM_CHIPS1"
+#export TUX_IMPORT_3="IMAGE_ORD|IMAGE_ORD|CHIPS_EF_BATCH0_TUX|CHIPS_TUX_FROM_CHIPS1,CHIPS_TUX_FROM_CHIPS0"
+#export TUX_IMPORT_4="ewfFormResponse|ewfFormResponse|CHIPS_EF_BATCH0_TUX|CHIPS_TUX_FROM_CHIPS0,CHIPS_TUX_FROM_CHIPS1"
+#export TUX_IMPORT_5="ewfFormResponse|ewfFormResponse|CHIPS_EF_BATCH0_TUX|CHIPS_TUX_FROM_CHIPS1,CHIPS_TUX_FROM_CHIPS0"
+#export TUX_IMPORT_6="xmlFormResponse|xmlFormResponse|CHIPS_EF_BATCH0_TUX|CHIPS_TUX_FROM_CHIPS0,CHIPS_TUX_FROM_CHIPS1"
+#export TUX_IMPORT_7="xmlFormResponse|xmlFormResponse|CHIPS_EF_BATCH0_TUX|CHIPS_TUX_FROM_CHIPS1,CHIPS_TUX_FROM_CHIPS0"
 
 # Exit without error if TUX_WL_NODE_COUNT is not set
 if [ -z ${TUX_WL_NODE_COUNT+x} ]; then
@@ -122,7 +122,7 @@ do
   TUX_IMPORTS=$(env | sort | grep "^TUX_IMPORT_")
   for TUX_IMPORT in ${TUX_IMPORTS};
   do
-    while IFS='|' read -r SERVICE LOCAL_AP_NAME REMOTE_ACCESS_POINTS;
+    while IFS='|' read -r LOCAL_SERVICE REMOTE_SERVICE LOCAL_AP_NAME REMOTE_ACCESS_POINTS;
     do
       if [ ${TUX_WL_NODE_COUNT} -gt 1 ]; then
         LOCAL_AP_NAME="${LOCAL_AP_NAME}${WTC_NODE_INDEX}"
@@ -130,10 +130,10 @@ do
 
       echo "    <wtc-import>"
       echo "      <name>WTCImportedService-${SERVICE_COUNT}</name>"
-      echo "      <resource-name>${SERVICE}</resource-name>"
+      echo "      <resource-name>${LOCAL_SERVICE}</resource-name>"
       echo "      <local-access-point>${LOCAL_AP_NAME}</local-access-point>"
       echo "      <remote-access-point-list>${REMOTE_ACCESS_POINTS}</remote-access-point-list>"
-      echo "      <remote-name>${SERVICE}</remote-name>"
+      echo "      <remote-name>${REMOTE_SERVICE}</remote-name>"
       echo "    </wtc-import>"
 
       SERVICE_COUNT=$((SERVICE_COUNT+1))
