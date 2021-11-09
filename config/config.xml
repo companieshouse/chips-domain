@@ -358,6 +358,12 @@
       <max-threads-constraint>MaxThreadsConstraint-0</max-threads-constraint>
       <ignore-stuck-threads>false</ignore-stuck-threads>
     </work-manager>
+    <work-manager>
+      <name>EfilingResponseJMSWorkManager</name>
+      <target>wlcluster</target>
+      <max-threads-constraint>MaxThreadsConstraint-0</max-threads-constraint>
+      <ignore-stuck-threads>true</ignore-stuck-threads>
+    </work-manager>
   </self-tuning>
   <startup-class>
     <name>MBeanRegistry</name>
