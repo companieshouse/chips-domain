@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# This script deletes any existing realm (ldap) data that may exist for the wladmin server
-# and then adds the required ldif entries into the DefaultAuthenticatorInit LDIF file for any users that 
-# are specified in environment variables.
+# This script deletes any existing realm (LDAP) data that may exist for the wladmin server
+# and then adds the required entries into the DefaultAuthenticatorInit LDIF file for any users that 
+# are specified in environment variables. LDIF=LDAP Data Interchange Format - see https://datatracker.ietf.org/doc/html/rfc2849.
 # The variable names are of the form REALM_USER_#, where # is a suffix to ensure each variable has a unique name.
 # The value of the variable is the username, then a pipe separator, then the password. E.g.:
 # REALM_USER_0=username|password
