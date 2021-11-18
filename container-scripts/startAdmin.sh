@@ -19,6 +19,9 @@ mkdir -p ${DOMAIN_HOME}/servers/${ADMIN_NAME}/security
 echo "username=weblogic" > ${DOMAIN_HOME}/servers/${ADMIN_NAME}/security/boot.properties
 echo "password=${ADMIN_PASSWORD}" >> ${DOMAIN_HOME}/servers/${ADMIN_NAME}/security/boot.properties
 
+# Delete any existing realm data and add any users defined in env vars
+${ORACLE_HOME}/container-scripts/createUsers.sh
+
 # Generate and set the tuxedo configuration from the environment
 cd ${DOMAIN_HOME}/config
 ${ORACLE_HOME}/container-scripts/generateTuxedoConfigFromEnv.sh > tuxedo-config.xml
