@@ -109,6 +109,18 @@
       </web-server-log>
     </web-server>
     <listen-address>wlserver1</listen-address>
+    <network-access-point>
+      <name>t3s-channel</name>
+      <protocol>t3s</protocol>
+      <public-address>@t3-host-fqdn@</public-address>
+      <public-port>@t3-host-port-prefix@1</public-port>
+      <http-enabled-for-this-protocol>false</http-enabled-for-this-protocol>
+      <tunneling-enabled>false</tunneling-enabled>
+      <outbound-enabled>false</outbound-enabled>
+      <enabled>true</enabled>
+      <two-way-ssl-enabled>false</two-way-ssl-enabled>
+      <client-certificate-enforced>false</client-certificate-enforced>
+    </network-access-point>
     <server-start>
       <class-path>/apps/oracle/chipsdomain:/apps/oracle/chipsdomain/chipsconfig/antlr-2.7.6.jar:/apps/oracle/chipsdomain/chipsconfig/log4j.jar:/apps/oracle/chipsdomain/chipsconfig/aqapi12.jar:/apps/oracle/chipsdomain/chipsconfig/aqbridge.jar:/apps/oracle/chipsdomain/chipsconfig/chips_config.jar:/apps/oracle/chipsdomain/chipsconfig/ssoRMI.jar:/apps/oracle/chipsdomain/chipsconfig/rmi_config.jar:/apps/oracle/chipsdomain/chipsconfig:/apps/oracle/chipsdomain/chipsconfig/xsl:/apps/oracle/chipsdomain/chipsconfig/rtfTemplates:/apps/oracle/chipsdomain/chipsconfig/core-renderer.jar:/apps/oracle/chipsdomain/chipsconfig/itext-2.0.8.jar:/apps/oracle/chipsdomain/chipsconfig/chips-tuxedo-library-1.0.0.jar</class-path>
       <arguments>@start-args@</arguments>
@@ -140,6 +152,18 @@
       </web-server-log>
     </web-server>
     <listen-address>wlserver2</listen-address>
+    <network-access-point>
+      <name>t3s-channel</name>
+      <protocol>t3s</protocol>
+      <public-address>@t3-host-fqdn@</public-address>
+      <public-port>@t3-host-port-prefix@2</public-port>
+      <http-enabled-for-this-protocol>false</http-enabled-for-this-protocol>
+      <tunneling-enabled>false</tunneling-enabled>
+      <outbound-enabled>false</outbound-enabled>
+      <enabled>true</enabled>
+      <two-way-ssl-enabled>false</two-way-ssl-enabled>
+      <client-certificate-enforced>false</client-certificate-enforced>
+    </network-access-point>
     <server-start>
       <class-path>/apps/oracle/chipsdomain:/apps/oracle/chipsdomain/chipsconfig/antlr-2.7.6.jar:/apps/oracle/chipsdomain/chipsconfig/log4j.jar:/apps/oracle/chipsdomain/chipsconfig/aqapi12.jar:/apps/oracle/chipsdomain/chipsconfig/aqbridge.jar:/apps/oracle/chipsdomain/chipsconfig/chips_config.jar:/apps/oracle/chipsdomain/chipsconfig/ssoRMI.jar:/apps/oracle/chipsdomain/chipsconfig/rmi_config.jar:/apps/oracle/chipsdomain/chipsconfig:/apps/oracle/chipsdomain/chipsconfig/xsl:/apps/oracle/chipsdomain/chipsconfig/rtfTemplates:/apps/oracle/chipsdomain/chipsconfig/core-renderer.jar:/apps/oracle/chipsdomain/chipsconfig/itext-2.0.8.jar:/apps/oracle/chipsdomain/chipsconfig/chips-tuxedo-library-1.0.0.jar</class-path>
       <arguments>@start-args@</arguments>
@@ -171,6 +195,18 @@
       </web-server-log>
     </web-server>
     <listen-address>wlserver3</listen-address>
+    <network-access-point>
+      <name>t3s-channel</name>
+      <protocol>t3s</protocol>
+      <public-address>@t3-host-fqdn@</public-address>
+      <public-port>@t3-host-port-prefix@3</public-port>
+      <http-enabled-for-this-protocol>false</http-enabled-for-this-protocol>
+      <tunneling-enabled>false</tunneling-enabled>
+      <outbound-enabled>false</outbound-enabled>
+      <enabled>true</enabled>
+      <two-way-ssl-enabled>false</two-way-ssl-enabled>
+      <client-certificate-enforced>false</client-certificate-enforced>
+    </network-access-point>
     <server-start>
       <class-path>/apps/oracle/chipsdomain:/apps/oracle/chipsdomain/chipsconfig/antlr-2.7.6.jar:/apps/oracle/chipsdomain/chipsconfig/log4j.jar:/apps/oracle/chipsdomain/chipsconfig/aqapi12.jar:/apps/oracle/chipsdomain/chipsconfig/aqbridge.jar:/apps/oracle/chipsdomain/chipsconfig/chips_config.jar:/apps/oracle/chipsdomain/chipsconfig/ssoRMI.jar:/apps/oracle/chipsdomain/chipsconfig/rmi_config.jar:/apps/oracle/chipsdomain/chipsconfig:/apps/oracle/chipsdomain/chipsconfig/xsl:/apps/oracle/chipsdomain/chipsconfig/rtfTemplates:/apps/oracle/chipsdomain/chipsconfig/core-renderer.jar:/apps/oracle/chipsdomain/chipsconfig/itext-2.0.8.jar:/apps/oracle/chipsdomain/chipsconfig/chips-tuxedo-library-1.0.0.jar</class-path>
       <arguments>@start-args@</arguments>
@@ -202,6 +238,18 @@
       </web-server-log>
     </web-server>
     <listen-address>wlserver4</listen-address>
+    <network-access-point>
+      <name>t3s-channel</name>
+      <protocol>t3s</protocol>
+      <public-address>@t3-host-fqdn@</public-address>
+      <public-port>@t3-host-port-prefix@4</public-port>
+      <http-enabled-for-this-protocol>false</http-enabled-for-this-protocol>
+      <tunneling-enabled>false</tunneling-enabled>
+      <outbound-enabled>false</outbound-enabled>
+      <enabled>true</enabled>
+      <two-way-ssl-enabled>false</two-way-ssl-enabled>
+      <client-certificate-enforced>false</client-certificate-enforced>
+    </network-access-point>
     <server-start>
       <class-path>/apps/oracle/chipsdomain:/apps/oracle/chipsdomain/chipsconfig/antlr-2.7.6.jar:/apps/oracle/chipsdomain/chipsconfig/log4j.jar:/apps/oracle/chipsdomain/chipsconfig/aqapi12.jar:/apps/oracle/chipsdomain/chipsconfig/aqbridge.jar:/apps/oracle/chipsdomain/chipsconfig/chips_config.jar:/apps/oracle/chipsdomain/chipsconfig/ssoRMI.jar:/apps/oracle/chipsdomain/chipsconfig/rmi_config.jar:/apps/oracle/chipsdomain/chipsconfig:/apps/oracle/chipsdomain/chipsconfig/xsl:/apps/oracle/chipsdomain/chipsconfig/rtfTemplates:/apps/oracle/chipsdomain/chipsconfig/core-renderer.jar:/apps/oracle/chipsdomain/chipsconfig/itext-2.0.8.jar:/apps/oracle/chipsdomain/chipsconfig/chips-tuxedo-library-1.0.0.jar</class-path>
       <arguments>@start-args@</arguments>
