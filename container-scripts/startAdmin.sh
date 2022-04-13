@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 if [ -z ${ADMIN_PASSWORD+x} ]; then
   echo "Env var ADMIN_PASSWORD must be set! Exiting.."
@@ -29,6 +29,10 @@ sed -i -e '/@tuxedo-config@/{r tuxedo-config.xml' -e 'd' -e '}' config.xml
 
 # Set the managed server startup arguments
 sed -i "s/@start-args@/${START_ARGS}/g" config.xml
+
+# Set the t3 channel external listen address and port prefix
+sed -i "s/@t3-host-fqdn@/${T3_HOST_FQDN}/g" config.xml
+sed -i "s/@t3-host-port-prefix@/${T3_HOST_PORT_PREFIX}/g" config.xml
 
 # Update the domain credentials to those provided by env var
 ${ORACLE_HOME}/oracle_common/common/bin/wlst.sh -skipWLSModuleScanning ${ORACLE_HOME}/container-scripts/set-credentials.py
