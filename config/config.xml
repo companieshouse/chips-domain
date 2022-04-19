@@ -86,6 +86,19 @@
       <hostname-verification-ignored>true</hostname-verification-ignored>
     </ssl>
     <listen-address>wladmin</listen-address>
+    <network-access-point>
+      <name>t3s-channel</name>
+      <protocol>t3s</protocol>
+      <public-address>@t3-host-fqdn@</public-address>
+      <listen-port>7003</listen-port>
+      <public-port>@t3-host-port-prefix@0</public-port>
+      <http-enabled-for-this-protocol>false</http-enabled-for-this-protocol>
+      <tunneling-enabled>false</tunneling-enabled>
+      <outbound-enabled>false</outbound-enabled>
+      <enabled>true</enabled>
+      <two-way-ssl-enabled>false</two-way-ssl-enabled>
+      <client-certificate-enforced>false</client-certificate-enforced>
+    </network-access-point>
     <weblogic-plugin-enabled>true</weblogic-plugin-enabled>
   </server>
   <server>
@@ -113,6 +126,7 @@
       <name>t3s-channel</name>
       <protocol>t3s</protocol>
       <public-address>@t3-host-fqdn@</public-address>
+      <listen-port>7003</listen-port>
       <public-port>@t3-host-port-prefix@1</public-port>
       <http-enabled-for-this-protocol>false</http-enabled-for-this-protocol>
       <tunneling-enabled>false</tunneling-enabled>
@@ -156,6 +170,7 @@
       <name>t3s-channel</name>
       <protocol>t3s</protocol>
       <public-address>@t3-host-fqdn@</public-address>
+      <listen-port>7003</listen-port>
       <public-port>@t3-host-port-prefix@2</public-port>
       <http-enabled-for-this-protocol>false</http-enabled-for-this-protocol>
       <tunneling-enabled>false</tunneling-enabled>
@@ -199,6 +214,7 @@
       <name>t3s-channel</name>
       <protocol>t3s</protocol>
       <public-address>@t3-host-fqdn@</public-address>
+      <listen-port>7003</listen-port>
       <public-port>@t3-host-port-prefix@3</public-port>
       <http-enabled-for-this-protocol>false</http-enabled-for-this-protocol>
       <tunneling-enabled>false</tunneling-enabled>
@@ -242,6 +258,7 @@
       <name>t3s-channel</name>
       <protocol>t3s</protocol>
       <public-address>@t3-host-fqdn@</public-address>
+      <listen-port>7003</listen-port>
       <public-port>@t3-host-port-prefix@4</public-port>
       <http-enabled-for-this-protocol>false</http-enabled-for-this-protocol>
       <tunneling-enabled>false</tunneling-enabled>
