@@ -43,4 +43,7 @@ ${ORACLE_HOME}/oracle_common/common/bin/wlst.sh -skipWLSModuleScanning ${ORACLE_
 # Prevent Derby from being started
 export DERBY_FLAG=false
 
+# Update the CLASSPATH of the Admin server to allow viewing of EF JMS messages
+export CLASSPATH=${CLASSPATH}:${DOMAIN_HOME}/chipsconfig/jmstool.jar:${DOMAIN_HOME}/chipsconfig/log4j.jar:${DOMAIN_HOME}/chipsconfig/jdom.jar
+
 ${DOMAIN_HOME}/bin/startWebLogic.sh $*
