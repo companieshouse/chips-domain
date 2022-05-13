@@ -81,6 +81,7 @@
 @tuxedo-config@
   <server>
     <name>wladmin</name>
+    <max-message-size>100000000</max-message-size>
     <ssl>
       <hostname-verifier xsi:nil="true"></hostname-verifier>
       <hostname-verification-ignored>true</hostname-verification-ignored>
@@ -103,6 +104,7 @@
   </server>
   <server>
     <name>wlserver1</name>
+    <max-message-size>100000000</max-message-size>
     <ssl>
       <hostname-verifier xsi:nil="true"></hostname-verifier>
       <hostname-verification-ignored>true</hostname-verification-ignored>
@@ -147,6 +149,7 @@
   </server>
   <server>
     <name>wlserver2</name>
+    <max-message-size>100000000</max-message-size>
     <ssl>
       <hostname-verifier xsi:nil="true"></hostname-verifier>
       <hostname-verification-ignored>true</hostname-verification-ignored>
@@ -191,6 +194,7 @@
   </server>
   <server>
     <name>wlserver3</name>
+    <max-message-size>100000000</max-message-size>
     <ssl>
       <hostname-verifier xsi:nil="true"></hostname-verifier>
       <hostname-verification-ignored>true</hostname-verification-ignored>
@@ -235,6 +239,7 @@
   </server>
   <server>
     <name>wlserver4</name>
+    <max-message-size>100000000</max-message-size>
     <ssl>
       <hostname-verifier xsi:nil="true"></hostname-verifier>
       <hostname-verification-ignored>true</hostname-verification-ignored>
