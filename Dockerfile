@@ -50,7 +50,7 @@ RUN sed -i 's/umask 027/umask 022/' ${DOMAIN_NAME}/bin/startWebLogic.sh && \
 # Download fop fonts and endorsed libs from artifactory and install into JRE
 USER root
 RUN cd ${JAVA_HOME}/jre/lib && \
-    curl ${ARTIFACTORY_BASE_URL}/local-ch-release/uk/gov/companieshouse/chips-fop-fonts/1.0.0/chips-fop-fonts-1.0.0.tar -o chips-fop-fonts.tar && \
+    curl ${ARTIFACTORY_BASE_URL}/local-ch-release/uk/gov/companieshouse/chips-fop-fonts/1.0.1/chips-fop-fonts-1.0.1.tar -o chips-fop-fonts.tar && \
     tar -xvf chips-fop-fonts.tar && rm chips-fop-fonts.tar && \
     mkdir -p endorsed && cd endorsed && curl ${ARTIFACTORY_BASE_URL}/libs-release/xalan/xalan/2.7.0/xalan-2.7.0.jar -o xalan-2.7.0.jar
 
