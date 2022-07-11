@@ -24,6 +24,9 @@ COPY --chown=weblogic:weblogic config ${DOMAIN_NAME}/config/
 # Copy across chipsconfig directory
 COPY --chown=weblogic:weblogic chipsconfig ${DOMAIN_NAME}/chipsconfig/
 
+# Copy across csi web app
+COPY --chown=weblogic:weblogic csi ${DOMAIN_NAME}/upload/csi/
+
 # Download libs and ixbrl fonts from artifactory
 RUN cd ${DOMAIN_NAME}/chipsconfig && \
     curl ${ARTIFACTORY_BASE_URL}/libs-release/antlr/antlr/2.7.6/antlr-2.7.6.jar -o antlr-2.7.6.jar && \
