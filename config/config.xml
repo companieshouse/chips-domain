@@ -311,6 +311,14 @@
     <security-dd-model>DDOnly</security-dd-model>
     <staging-mode>nostage</staging-mode>
   </app-deployment>
+  <app-deployment>
+    <name>csi</name>
+    <target>wlcluster</target>
+    <module-type>war</module-type>
+    <source-path>upload/csi</source-path>
+    <security-dd-model>DDOnly</security-dd-model>
+    <staging-mode>nostage</staging-mode>
+  </app-deployment>
   <machine xsi:type="unix-machineType">
     <name>mach-wlserver1</name>
     <node-manager>

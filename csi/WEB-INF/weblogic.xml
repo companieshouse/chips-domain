@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weblogic-web-app>
+  <security-role-assignment>
+    <role-name>adminuser</role-name>
+    <principal-name>Administrators</principal-name>
+  </security-role-assignment>
+</weblogic-web-app>
