@@ -24,9 +24,6 @@ COPY --chown=weblogic:weblogic config ${DOMAIN_NAME}/config/
 # Copy across chipsconfig directory
 COPY --chown=weblogic:weblogic chipsconfig ${DOMAIN_NAME}/chipsconfig/
 
-# Copy across csi web app
-COPY --chown=weblogic:weblogic csi ${DOMAIN_NAME}/upload/csi/
-
 # Download libs and ixbrl fonts from artifactory
 RUN cd ${DOMAIN_NAME}/chipsconfig && \
     curl ${ARTIFACTORY_BASE_URL}/libs-release/antlr/antlr/2.7.6/antlr-2.7.6.jar -o antlr-2.7.6.jar && \
@@ -57,6 +54,10 @@ RUN cd ${JAVA_HOME}/jre/lib && \
     curl ${ARTIFACTORY_BASE_URL}/local-ch-release/uk/gov/companieshouse/chips-fop-fonts/1.0.1/chips-fop-fonts-1.0.1.tar -o chips-fop-fonts.tar && \
     tar -xvf chips-fop-fonts.tar && rm chips-fop-fonts.tar && \
     mkdir -p endorsed && cd endorsed && curl ${ARTIFACTORY_BASE_URL}/libs-release/xalan/xalan/2.7.0/xalan-2.7.0.jar -o xalan-2.7.0.jar
+
+# Copy across csi web app and correct permissions of upload folder
+COPY --chown=weblogic:weblogic csi ${DOMAIN_NAME}/upload/csi/
+RUN chown weblogic:weblogic ${DOMAIN_NAME}/upload
 
 USER weblogic
 CMD ["bash"]
