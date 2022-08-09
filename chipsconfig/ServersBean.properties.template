@@ -27,7 +27,7 @@ template.supportTxSteps=false
 # JNDI properties
 #
 template.initialContextFactory=weblogic.jndi.WLInitialContextFactory
-template.providerUrl=t3://wladmin:7001
+template.providerUrl=t3://wlserver1:7001
 template.jmsFactory=uk.gov.ch.chips.jms.queue.CHQueueConnectionFactory
 template.weblogic.credentials=${ADMIN_PASSWORD}
 template.weblogic.principal=${WEBLOGIC_ADMIN_USERNAME}
