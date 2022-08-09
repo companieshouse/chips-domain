@@ -319,6 +319,16 @@
     <security-dd-model>DDOnly</security-dd-model>
     <staging-mode>nostage</staging-mode>
   </app-deployment>
+  <app-deployment>
+    <name>swadmin</name>
+    <target>wladmin</target>
+    <module-type>war</module-type>
+    <source-path>upload/swadmin.war</source-path>
+    <security-dd-model>DDOnly</security-dd-model>
+    <staging-mode>nostage</staging-mode>
+    <plan-staging-mode xsi:nil="true"></plan-staging-mode>
+    <cache-in-app-directory>false</cache-in-app-directory>
+  </app-deployment>
   <machine xsi:type="unix-machineType">
     <name>mach-wlserver1</name>
     <node-manager>

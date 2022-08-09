@@ -59,7 +59,21 @@ RUN cd ${JAVA_HOME}/jre/lib && \
 COPY --chown=weblogic:weblogic csi ${DOMAIN_NAME}/upload/csi/
 RUN chown weblogic:weblogic ${DOMAIN_NAME}/upload
 
+# Install gettext to provide envsubst
+USER root
+RUN yum -y install gettext && \
+    yum clean all && \
+    rm -rf /var/cache/yum
+
 USER weblogic
+
+# Copy across swadmin web app and extract
+COPY --chown=weblogic:weblogic swadmin-*.zip ${DOMAIN_NAME}/upload
+RUN cd ${DOMAIN_NAME}/upload && \
+    if [ -f swadmin-*.zip ]; then \
+      unzip swadmin-*.zip && \
+      rm swadmin-*.zip && \
+      mv swadmin-*.war swadmin.war; \
+    fi
+
 CMD ["bash"]
-
-

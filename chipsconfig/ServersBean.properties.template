@@ -1,0 +1,68 @@
+#######################################################
+# Properties used by the SWAdmin utility web application
+########################################################
+#
+java.naming.factory.initial=com.sun.jndi.rmi.registry.RegistryContextFactory
+# SSO
+template.director=false
+template.ipAddress=${STAFFWARE_IPADDRESS}
+template.nodeName=${STAFFWARE_NODE}
+template.serverName=${STAFFWARE_HOSTNAME}
+template.tcpPort=${STAFFWARE_PORTS}
+template.rmiPort=${STAFFWARE_RMI_PORT}
+# SSO Lite
+template.db_driver=oracle.jdbc.driver.OracleDriver
+template.db_connection=${DB_URL_STAFFDS}
+template.db_user=${DB_USER_STAFFDS}
+template.db_password=${DB_PASSWORD_STAFFDS}
+# AQ queue
+template.aqQueue=${JMS_AQ_EAI_QUEUENAME}
+template.aqPoisonQueue=AQ$_EAITABLE
+# CHIPS Link
+template.chips.dblink.name=${DB_USER_CHIPSDS}
+template.chips.schema.name=${DB_USER_CHIPSDS}
+# SSO Version
+template.supportTxSteps=false
+#
+# JNDI properties
+#
+template.initialContextFactory=weblogic.jndi.WLInitialContextFactory
+template.providerUrl=t3://wladmin:7001
+template.jmsFactory=uk.gov.ch.chips.jms.queue.CHQueueConnectionFactory
+template.weblogic.credentials=${ADMIN_PASSWORD}
+template.weblogic.principal=${WEBLOGIC_ADMIN_USERNAME}
+#
+# JMS Servers
+#
+template.jmsServer0=JMSServer1
+template.jmsServer1=JMSServer2
+template.jmsServer2=JMSServer3
+template.jmsServer3=JMSServer4
+#
+# JMS Queues
+#
+# Staffware error queue
+template.jmsQueue0=true
+template.jmsQueue0.jndiName=uk.gov.ch.chips.jms.SWUndeliveredQueue
+template.jmsQueue0.description=Staffware Undelivered Queue
+template.jmsQueue0.target=uk.gov.ch.chips.jms.StaffwareQueue
+# Staffware request queue
+template.jmsQueue1=true
+template.jmsQueue1.jndiName=uk.gov.ch.chips.jms.StaffwareQueue
+template.jmsQueue1.description=Staffware Queue
+template.jmsQueue1.isStaffware=true
+#
+# JNDI iWebLogic managed servers
+#
+server0=true
+server0.providerUrl=t3://wlserver1:7001
+server0.description=wlserver1
+server1=true
+server1.providerUrl=t3://wlserver2:7001
+server1.description=wlserver2
+server2=true
+server2.providerUrl=t3://wlserver3:7001
+server2.description=wlserver3
+server3=true
+server3.providerUrl=t3://wlserver4:7001
+server3.description=wlserver4
