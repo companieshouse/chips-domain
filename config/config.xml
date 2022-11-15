@@ -79,6 +79,10 @@
     <two-phase-enabled>true</two-phase-enabled>
   </jta>
 @tuxedo-config@
+  <log>
+    <rotation-type>byTime</rotation-type>
+    <file-count>7</file-count>
+  </log>
   <server>
     <name>wladmin</name>
     <max-message-size>100000000</max-message-size>
@@ -86,6 +90,10 @@
       <hostname-verifier xsi:nil="true"></hostname-verifier>
       <hostname-verification-ignored>true</hostname-verification-ignored>
     </ssl>
+    <log>
+      <rotation-type>byTime</rotation-type>
+      <file-count>7</file-count>
+    </log>
     <listen-address>wladmin</listen-address>
     <network-access-point>
       <name>t3s-channel</name>
@@ -111,7 +119,7 @@
     </ssl>
     <log>
       <rotation-type>byTime</rotation-type>
-      <file-count>7</file-count>
+      <file-count>30</file-count>
     </log>
     <machine>mach-wlserver1</machine>
     <listen-port>7001</listen-port>
@@ -156,7 +164,7 @@
     </ssl>
     <log>
       <rotation-type>byTime</rotation-type>
-      <file-count>7</file-count>
+      <file-count>30</file-count>
     </log>
     <machine>mach-wlserver2</machine>
     <listen-port>7001</listen-port>
@@ -201,7 +209,7 @@
     </ssl>
     <log>
       <rotation-type>byTime</rotation-type>
-      <file-count>7</file-count>
+      <file-count>30</file-count>
     </log>
     <machine>mach-wlserver3</machine>
     <listen-port>7001</listen-port>
@@ -246,7 +254,7 @@
     </ssl>
     <log>
       <rotation-type>byTime</rotation-type>
-      <file-count>7</file-count>
+      <file-count>30</file-count>
     </log>
     <machine>mach-wlserver4</machine>
     <listen-port>7001</listen-port>
