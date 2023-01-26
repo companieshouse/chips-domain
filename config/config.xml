@@ -50,6 +50,14 @@
         <sec:name>WebLogicCertPathProvider</sec:name>
       </sec:cert-path-provider>
       <sec:cert-path-builder>WebLogicCertPathProvider</sec:cert-path-builder>
+      <sec:user-lockout-manager>
+        <sec:lockout-enabled>true</sec:lockout-enabled>
+        <sec:lockout-threshold>10</sec:lockout-threshold>
+        <sec:lockout-duration>10</sec:lockout-duration>
+        <sec:lockout-reset-duration>5</sec:lockout-reset-duration>
+        <sec:lockout-cache-size>5</sec:lockout-cache-size>
+        <sec:lockout-gc-threshold>400</sec:lockout-gc-threshold>
+      </sec:user-lockout-manager>
       <sec:deploy-role-ignored>false</sec:deploy-role-ignored>
       <sec:deploy-policy-ignored>false</sec:deploy-policy-ignored>
       <sec:name>myrealm</sec:name>
