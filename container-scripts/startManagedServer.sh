@@ -23,18 +23,24 @@ else
   echo "Admin server is not running, or has not started within timeout"
 fi
 
-echo "Starting AppDynamics Java Agent startup script"
-/opt/appdynamics/AppServerAgent/startAppDynamics.sh &
-appDynamicsPID=$!
-sleep 5
+# Only start AppDynamics Java Agent script if files are available
+if [ -f "/opt/appdynamics/AppServerAgent/startAppDynamics.sh" ]; then
+    
+  echo "Starting AppDynamics Java Agent startup script"
+  /opt/appdynamics/AppServerAgent/startAppDynamics.sh &
+  appDynamicsPID=$!
+  sleep 5
 
-#check whether background process is still running
-count=$(ps -p ${appDynamicsPID} | grep -c  ${appDynamicsPID}) 
+  #check whether background process is still running
+  count=$(ps -p ${appDynamicsPID} | grep -c  ${appDynamicsPID}) 
 
-if [[ $count -eq 1 ]]
-then 
-  echo "AppDynamics Java Agent startup script now running in background"
-else 
-  echo "AppDynamics Java Agent startup script startup failure"
+  if [[ $count -eq 1 ]]
+  then 
+    echo "AppDynamics Java Agent startup script now running in background"
+  else 
+    echo "AppDynamics Java Agent startup script startup failure"
+  fi
+
+else  
+  echo "AppDynamics Java Agent startup script not available"
 fi
-
