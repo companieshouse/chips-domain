@@ -70,10 +70,21 @@ USER weblogic
 # Copy across swadmin web app and extract
 COPY --chown=weblogic:weblogic swadmin-*.zip ${DOMAIN_NAME}/upload
 RUN cd ${DOMAIN_NAME}/upload && \
-    if [ -f swadmin-*.zip ]; then \
-      unzip swadmin-*.zip && \
-      rm swadmin-*.zip && \
-      mv swadmin-*.war swadmin.war; \
+     if [ -f swadmin-*.zip ]; then \
+       unzip swadmin-*.zip && \
+       rm swadmin-*.zip && \
+       mv swadmin-*.war swadmin.war; \
+     fi
+
+# Install AppDynamics Java Agent and extract
+COPY --chown=weblogic:weblogic AppServerAgent-1.8-*.zip /opt/appdynamics/AppServerAgent.zip    
+RUN if [ -f /opt/appdynamics/AppServerAgent.zip ]; then \
+      unzip /opt/appdynamics/AppServerAgent.zip -d /opt/appdynamics/AppServerAgent/  && \
+      rm /opt/appdynamics/AppServerAgent.zip; \
     fi
+
+# Copy across AppDynamics directory
+COPY --chown=weblogic:weblogic appdynamics/* /opt/appdynamics/AppServerAgent
+RUN chmod 754 /opt/appdynamics/AppServerAgent/startAppDynamics.sh 
 
 CMD ["bash"]
