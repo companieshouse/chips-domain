@@ -185,7 +185,6 @@ f_initAppDynamicsEnabled() {
       # Check var contains either Live or Staging
       if echo "$ENVIRONMENT_LABEL" | grep -q "Live\|Staging";
       then
-        APPDYNAMICS_AGENT_ENABLED=true
         f_logInfo "APPDYNAMICS_AGENT_ENABLED: $APPDYNAMICS_AGENT_ENABLED"
       else 
         APPDYNAMICS_AGENT_ENABLED=false
