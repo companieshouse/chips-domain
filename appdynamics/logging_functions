@@ -1,0 +1,68 @@
+#!/bin/bash
+#######################################################
+#
+# This file contains functions to assist production
+# of log output in a consistent manner for the Cloud
+# based Batch routines.
+#
+# Logging is sent to standard output so capture of
+# of the log is dependent upon calling script
+# directing standard output to the actual log files.
+#
+# This file should be sourced for functions to be used. 
+#
+#######################################################
+
+# =============================================================================
+# Arguments:
+#              arg 1 =        log template
+#              remainder arguments = parameters for logging
+#
+# Usage example:
+#
+# f_logInfo "Starting psc-pursuit-trigger"
+#
+# =============================================================================
+f_logInfo() {
+  f_log "INFO" "$@"
+}
+
+# =============================================================================
+# Arguments:
+#              arg 1 =        log template
+#              remainder arguments = parameters for logging
+#
+# Usage example:
+#
+# f_logError "Non-zero exit code for psc-pursuit-trigger java execution. The exit code was %s." "${exit_code}"
+#
+# =============================================================================
+f_logError() {
+  f_log "ERROR" "$@"
+}
+
+# =============================================================================
+# Arguments:
+#              arg 1 =        log template
+#              remainder arguments = parameters for logging
+#
+# Usage example:
+#
+# f_logWarn "Skipping first phase of job as not configured"
+#
+# =============================================================================
+f_logWarn() {
+  f_log "WARN" "$@"
+}
+
+# =============================================================================
+# Arguments:
+#              arg 1 =        log level
+#              arg 2 =        log template
+#              remainder arguments = parameters for logging
+# =============================================================================
+f_log() {
+  logLevel=$1; shift
+  logTemplate=$1; shift
+  printf "%-23s %s %-5s $logTemplate\n" "$(date +%FT%T,%3N)" "[${0##*/}]" "$logLevel"  "$@"
+}
