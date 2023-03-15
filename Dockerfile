@@ -84,7 +84,7 @@ RUN if [ -f /opt/appdynamics/AppServerAgent.zip ]; then \
     fi
 
 # Copy across AppDynamics directory
-COPY --chown=weblogic:weblogic appdynamics/* /opt/appdynamics/AppServerAgent
+COPY --chown=weblogic:weblogic appdynamics/* /opt/appdynamics/AppServerAgent/
 RUN if [ -f /opt/appdynamics/AppServerAgent/startAppDynamics.sh ]; then \
       chmod 754 /opt/appdynamics/AppServerAgent/startAppDynamics.sh; \       
     fi
