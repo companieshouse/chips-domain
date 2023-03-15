@@ -68,17 +68,6 @@
 #
 # APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY: The account access key used to authenticate with the Controller. 
 #
-# APPDYNAMICS_AGENT_HOME: Specifies location to place runtime agent related data. 
-# The directory should be different to the directory housing the actual java agent. 
-# By default, this directory will store:
-# - details of Weblogic server JVM processes attached to AppDynamics java agent
-# - the runtime directory for all runtime files (logs and transaction configuration) for agent nodes using the agent installation 
-#   (agent logs are written to <APPDYNAMICS_AGENT_HOME>/defaultAgentVersion/logs/node-name and
-#    transaction configuration is written to the <APPDYNAMICS_AGENT_HOME>/defaultAgentVersion/conf/node-name directory)
-#
-# Example: APPDYNAMICS_AGENT_HOME="/apps/appdynamics/appAgent"
-#
-# Note the runtime directory for all runtime files can be optionally switched using <APPDYNAMICS_AGENT_BASE_DIR>.
 #
 # ** Optional
 #
@@ -103,6 +92,21 @@
 # Where not supplied, defaults to ${APPDYNAMICS_AGENT_HOME}/defaultAgentVersion.
 #
 # Example: APPDYNAMICS_AGENT_BASE_DIR="${APPDYNAMICS_AGENT_HOME}/22.12.0.34603"
+#
+#
+# APPDYNAMICS_AGENT_HOME: Specifies location to place runtime agent related data. 
+# The directory should be different to the directory housing the actual java agent. 
+# By default, this directory will store:
+# - details of Weblogic server JVM processes attached to AppDynamics java agent
+# - the runtime directory for all runtime files (logs and transaction configuration) for agent nodes using the agent installation 
+#   (agent logs are written to <APPDYNAMICS_AGENT_HOME>/defaultAgentVersion/logs/node-name and
+#    transaction configuration is written to the <APPDYNAMICS_AGENT_HOME>/defaultAgentVersion/conf/node-name directory)
+#
+# Where not supplied, defaults to "/apps/appdynamics/appAgent".
+#
+# Example: APPDYNAMICS_AGENT_HOME="/apps/appdynamics/appAgentAlternate"
+#
+# Note the runtime directory for all runtime files can be optionally switched using <APPDYNAMICS_AGENT_BASE_DIR>.
 #
 #
 # APPDYNAMICS_PROXY_OPTS: Specify system properties for proxy host/port if using a proxy to connect to the 
@@ -204,6 +208,9 @@ f_initAppDynamicsEnabled() {
 # pre-requisites: 
 # =============================================================================
 
+# Optional env variable but needs to be defaulted if not set prior to any logging
+if [[ -z "${APPDYNAMICS_AGENT_HOME}" ]]; then APPDYNAMICS_AGENT_HOME="/apps/appdynamics/appAgent"; fi
+
 # Set up logging
 LOGS_DIR=${APPDYNAMICS_AGENT_HOME}/logs
 mkdir -p "${LOGS_DIR}"
@@ -211,7 +218,6 @@ LOG_FILE="${LOGS_DIR}/${HOSTNAME}-appd-java-agent-control-$(date +'%Y-%m-%d_%H-%
 
 # Direct output to logfile
 exec >> "${LOG_FILE}" 2>&1
-
 
 if [[ "$#" -gt "0" ]]; then f_logError "Usage: No arguments required. Configure using environment variables."; exit 1; fi
 
@@ -231,9 +237,7 @@ else
   f_logInfo "AppDynamics Java Agent attachment is enabled."
 fi
 
-if [[ -z "${APPDYNAMICS_AGENT_HOME}" ]]; then f_logError "APPDYNAMICS_AGENT_HOME not set."; exit 1; 
-else f_logInfo "APPDYNAMICS_AGENT_HOME: %s" "${APPDYNAMICS_AGENT_HOME}"; 
-fi
+f_logInfo "APPDYNAMICS_AGENT_HOME: %s" "${APPDYNAMICS_AGENT_HOME}";
 
 if [[ -z "${APPDYNAMICS_CONTROLLER_HOST_NAME}" ]]; then f_logError "APPDYNAMICS_CONTROLLER_HOST_NAME not set."; exit 1; 
 else f_logInfo "JAVA_HOME: %s" "${APPDYNAMICS_CONTROLLER_HOST_NAME}"; 
@@ -265,8 +269,7 @@ fi
 
 # Check if optional env values are set
 if [[ -z "${APPDYNAMICS_AGENT_BASE_DIR}" ]]; then f_logWarn "APPDYNAMICS_AGENT_BASE_DIR not set. Will use defaults."; fi
-if [[ -z "${APPDYNAMICS_AGENT_NODE_NAME}" ]]; then f_logWarn "APPDYNAMICS_AGENT_NODE_NAME not set. Will use defaults."; 
-fi
+if [[ -z "${APPDYNAMICS_AGENT_NODE_NAME}" ]]; then f_logWarn "APPDYNAMICS_AGENT_NODE_NAME not set. Will use defaults."; fi
 
 #Default to use sleep of 420 seconds (as per original on premise setting)
 SLEEP_SECS=420
@@ -323,12 +326,12 @@ fi
 # 
 if [[ -z "${APPDYNAMICS_AGENT_BASE_DIR}" ]]
 then      
-  #APPDYNAMICS_AGENT_BASE_DIR=${APPDYNAMICS_AGENT_HOME}/${APPDYNAMICS_AGENT_VERSION}/logs/${APPDYNAMICS_AGENT_NODE_NAME}
   APPDYNAMICS_AGENT_BASE_DIR="${APPDYNAMICS_AGENT_HOME}/defaultAgentVersion"
   f_logInfo "No value supplied for APPDYNAMICS_AGENT_BASE_DIR value. Defaulting to: %s" "${APPDYNAMICS_AGENT_BASE_DIR}"  
 else
   f_logInfo "Using optional value for APPDYNAMICS_AGENT_BASE_DIR: %s" "${APPDYNAMICS_AGENT_BASE_DIR}";
 fi
+
 
 AGENT="-jar $APP_AGENT_LOCATION"
 TOOLS_JAR=-Xbootclasspath/a:${JAVA_HOME}/lib/tools.jar
@@ -359,7 +362,7 @@ do
     RUNNING_WEBLOGIC_SERVER_PID_POST_PAUSE=$(f_isSameWeblogicServerPID "$RUNNING_WEBLOGIC_SERVER_PID")     
     if [[ "${RUNNING_WEBLOGIC_SERVER_PID_POST_PAUSE}" != 0 ]]; then
       f_logInfo "Running Weblogic Server instance is different post pause"
-      break
+      continue
     fi
 
     if [[ ! -e "${AGENT_IS_ATTACHED}" ]] # We know one PID running
@@ -432,6 +435,6 @@ do
   sleep $SLEEP_SECS_BETWEEN_ITERATIONS
 
   #Housekeeping of agent log files - remove files whose data was last modified 1 day ago
-  find /apps/appdynamics/appAgent/logs/ -mindepth 1 -mtime +1 -delete
+  find "${LOGS_DIR}"/ -mindepth 1 -mtime +1 -delete
 
 done
