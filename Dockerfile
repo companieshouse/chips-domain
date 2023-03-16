@@ -80,6 +80,7 @@ RUN cd ${DOMAIN_NAME}/upload && \
 COPY --chown=weblogic:weblogic AppServerAgent-1.8-*.zip /opt/appdynamics/AppServerAgent.zip    
 RUN if [ -f /opt/appdynamics/AppServerAgent.zip ]; then \
       unzip /opt/appdynamics/AppServerAgent.zip -d /opt/appdynamics/AppServerAgent/  && \
+      rm -rf /opt/appdynamics/AppServerAgent/ver*/external-services/ && \
       rm /opt/appdynamics/AppServerAgent.zip; \
     fi
 
