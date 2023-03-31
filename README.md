@@ -40,6 +40,7 @@ In order to use the image, a number of environment properties need to be defined
 |AD_USER_BASE_DN|The base location under which users can be found via a subtree search|OU=MySection, OU=MyOrg, DC=MyDepartment, DC=local
 |AD_GROUP_BASE_DN|The base location under which groups can be found via a subtree search|OU=MySection, OU=MyOrg, DC=MyDepartment, DC=local
 |AUTO_START_NODES|A list of managed server names to auto start when the container is launched|wlserver1,wlserver2,wlserver3,wlserver4
+|WLADMIN_AWAIT_TIMEOUT|The number of seconds to wait for the wladmin server to start up, before abandoning the auto start of a managed server. Optional, as there is a default of 180 secs if this is not set.|240
 |TZ|The timezone to use when running WebLogic|Europe/London
 |T3_HOST_FQDN|The external hostname of the server to use when connecting via T3s protocol|127.0.0.1 or chips-ef-batch0.development.heritage.aws.internal
 |T3_HOST_PORT_PREFIX|The external port prefix of the servers to use when connecting via T3s protocol.  For example, if 2103 was set then wlserver1 would listen on 21031 and wlserver2 on 21032 etc. This must match up with the T3s ports exposed by docker and defined in docker-compose.yml|2103

@@ -20,7 +20,7 @@ def checkConnection(adminUsername, adminPassword, adminServerT3):
 adminServerT3 = 't3://wladmin:7001'
 adminUsername = 'weblogic'
 adminPassword = os.environ.get("ADMIN_PASSWORD")
-timeout = 120
+timeout = os.environ.get("WLADMIN_AWAIT_TIMEOUT", 180)
 
 
 #Check if the server can be connected to
