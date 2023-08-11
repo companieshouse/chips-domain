@@ -433,7 +433,7 @@
     <target>wlcluster</target>
     <module-type>ear</module-type>
     <source-path>upload/weblogic/chips.ear</source-path>
-    <security-dd-model>DDOnly</security-dd-model>
+    <security-dd-model>CustomRolesAndPolicies</security-dd-model>
     <staging-mode>nostage</staging-mode>
     <plan-staging-mode xsi:nil="true"></plan-staging-mode>
     <cache-in-app-directory>false</cache-in-app-directory>
