@@ -34,6 +34,11 @@ sed -i "s/@start-args@/${START_ARGS}/g" config.xml
 sed -i "s/@t3-host-fqdn@/${T3_HOST_FQDN}/g" config.xml
 sed -i "s/@t3-host-port-prefix@/${T3_HOST_PORT_PREFIX}/g" config.xml
 
+# Set the Single Sign On configuration
+sed -i "s/@sso-published-site-url@/${SSO_PUBLISHED_SITE_URL}/g" config.xml
+sed -i "s/@sso-entity-id@/${SSO_ENTITY_ID}/g" config.xml
+sed -i "s/@sso-chips-default-url@/${SSO_CHIPS_DEFAULT_URL}/g" config.xml
+
 # Update the domain credentials to those provided by env var
 ${ORACLE_HOME}/oracle_common/common/bin/wlst.sh -skipWLSModuleScanning ${ORACLE_HOME}/container-scripts/set-credentials.py
 
