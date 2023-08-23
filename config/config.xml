@@ -5,6 +5,10 @@
   <security-configuration>
     <name>chipsdomain</name>
     <realm>
+      <sec:authentication-provider xsi:type="wls:saml-authenticatorType">
+        <sec:name>SAML_AUTH</sec:name>
+        <sec:control-flag>SUFFICIENT</sec:control-flag>
+      </sec:authentication-provider>
       <sec:authentication-provider xsi:type="wls:default-authenticatorType">
         <sec:name>DefaultAuthenticator</sec:name>
         <sec:control-flag>SUFFICIENT</sec:control-flag>
@@ -15,7 +19,7 @@
       </sec:authentication-provider>
       <sec:authentication-provider xsi:type="wls:active-directory-authenticatorType">
         <sec:name>AD_LDAP</sec:name>
-        <sec:control-flag>REQUIRED</sec:control-flag>
+        <sec:control-flag>OPTIONAL</sec:control-flag>
         <wls:host></wls:host>
         <wls:port></wls:port>
         <wls:ssl-enabled>true</wls:ssl-enabled>
@@ -36,10 +40,6 @@
       </sec:authentication-provider>
       <sec:authentication-provider xmlns:sam="http://xmlns.oracle.com/weblogic/security/saml2" xsi:type="sam:saml2-identity-asserterType">
         <sec:name>SAML_IA</sec:name>
-      </sec:authentication-provider>
-      <sec:authentication-provider xsi:type="wls:saml-authenticatorType">
-        <sec:name>SAML_AUTH</sec:name>
-        <sec:control-flag>OPTIONAL</sec:control-flag>
       </sec:authentication-provider>
       <sec:role-mapper xmlns:xac="http://xmlns.oracle.com/weblogic/security/xacml" xsi:type="xac:xacml-role-mapperType">
         <sec:name>XACMLRoleMapper</sec:name>
@@ -170,10 +170,10 @@
     </jta-migratable-target>
     <weblogic-plugin-enabled>true</weblogic-plugin-enabled>
     <single-sign-on-services>
-      <published-site-url>@published-site-url@/saml2</published-site-url>
-      <entity-id>azure-sso-saml2-wlserver1</entity-id>
+      <published-site-url>@sso-published-site-url@</published-site-url>
+      <entity-id>@sso-entity-id@</entity-id>
       <service-provider-enabled>true</service-provider-enabled>
-      <default-url>@chips-default-url@/chips/cff</default-url>
+      <default-url>@sso-chips-default-url@</default-url>
       <service-provider-artifact-binding-enabled>true</service-provider-artifact-binding-enabled>
       <service-provider-post-binding-enabled>true</service-provider-post-binding-enabled>
       <service-provider-preferred-binding>HTTP/POST</service-provider-preferred-binding>
@@ -243,10 +243,10 @@
     </jta-migratable-target>
     <weblogic-plugin-enabled>true</weblogic-plugin-enabled>
     <single-sign-on-services>
-      <published-site-url>@published-site-url@/saml2</published-site-url>
-      <entity-id>azure-sso-saml2-wlserver2</entity-id>
+      <published-site-url>@sso-published-site-url@</published-site-url>
+      <entity-id>@sso-entity-id@</entity-id>
       <service-provider-enabled>true</service-provider-enabled>
-      <default-url>@chips-default-url@/chips/cff</default-url>
+      <default-url>@sso-chips-default-url@</default-url>
       <service-provider-artifact-binding-enabled>true</service-provider-artifact-binding-enabled>
       <service-provider-post-binding-enabled>true</service-provider-post-binding-enabled>
       <service-provider-preferred-binding>HTTP/POST</service-provider-preferred-binding>
@@ -316,10 +316,10 @@
     </jta-migratable-target>
     <weblogic-plugin-enabled>true</weblogic-plugin-enabled>
     <single-sign-on-services>
-      <published-site-url>@published-site-url@/saml2</published-site-url>
-      <entity-id>azure-sso-saml2-wlserver3</entity-id>
+      <published-site-url>@sso-published-site-url@</published-site-url>
+      <entity-id>@sso-entity-id@</entity-id>
       <service-provider-enabled>true</service-provider-enabled>
-      <default-url>@chips-default-url@/chips/cff</default-url>
+      <default-url>@sso-chips-default-url@</default-url>
       <service-provider-artifact-binding-enabled>true</service-provider-artifact-binding-enabled>
       <service-provider-post-binding-enabled>true</service-provider-post-binding-enabled>
       <service-provider-preferred-binding>HTTP/POST</service-provider-preferred-binding>
@@ -389,10 +389,10 @@
     </jta-migratable-target>
     <weblogic-plugin-enabled>true</weblogic-plugin-enabled>
     <single-sign-on-services>
-      <published-site-url>@published-site-url@/saml2</published-site-url>
-      <entity-id>azure-sso-saml2-wlserver4</entity-id>
+      <published-site-url>@sso-published-site-url@</published-site-url>
+      <entity-id>@sso-entity-id@</entity-id>
       <service-provider-enabled>true</service-provider-enabled>
-      <default-url>@chips-default-url@/chips/cff</default-url>
+      <default-url>@sso-chips-default-url@</default-url>
       <service-provider-artifact-binding-enabled>true</service-provider-artifact-binding-enabled>
       <service-provider-post-binding-enabled>true</service-provider-post-binding-enabled>
       <service-provider-preferred-binding>HTTP/POST</service-provider-preferred-binding>
@@ -433,7 +433,7 @@
     <target>wlcluster</target>
     <module-type>ear</module-type>
     <source-path>upload/weblogic/chips.ear</source-path>
-    <security-dd-model>CustomRolesAndPolicies</security-dd-model>
+    <security-dd-model>DDOnly</security-dd-model>
     <staging-mode>nostage</staging-mode>
     <plan-staging-mode xsi:nil="true"></plan-staging-mode>
     <cache-in-app-directory>false</cache-in-app-directory>
