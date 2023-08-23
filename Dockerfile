@@ -36,6 +36,7 @@ RUN cd ${DOMAIN_NAME}/chipsconfig && \
     curl ${ARTIFACTORY_BASE_URL}/local-ch-release/chaps/jms/jmstool/0.0.8/jmstool-0.0.8.jar -o jmstool.jar && \
     curl ${ARTIFACTORY_BASE_URL}/libs-release/uk/gov/companieshouse/chips-tuxedo-library/1.0.0/chips-tuxedo-library-1.0.0.jar -o chips-tuxedo-library-1.0.0.jar && \
     curl ${ARTIFACTORY_BASE_URL}/libs-release/uk/gov/companieshouse/weblogic-tux-hostname-patch/1.0.0/weblogic-tux-hostname-patch-1.0.0.jar -o weblogic-tux-hostname-patch-1.0.0.jar && \
+    curl ${ARTIFACTORY_BASE_URL}/libs-release/xalan/xalan/2.7.0/xalan-2.7.0.jar -o xalan.jar && \
     cd .. && \
     curl ${ARTIFACTORY_BASE_URL}/local-ch-release/uk/gov/companieshouse/chips-ixbrl-fonts/1.0.0/chips-ixbrl-fonts-1.0.0.tar -o chips-ixbrl-fonts.tar && \
     tar -xvf chips-ixbrl-fonts.tar && rm chips-ixbrl-fonts.tar
