@@ -59,10 +59,10 @@ Optionally, the domain can be initialised with additional internal realm users s
 |--|----|--
 |REALM_USER_N|Additional user to add to the realm.  This is mainly useful for adding users for the remote tuxedo domains, to allow for incoming calls.  This takes the form: `<unique name>=<username>\|<password>`.|REALM_USER_0=myusername\|mypassword
 
-The domain configuration supports SAML2 Single Sign On that can be configured by environment properties:
+The domain configuration supports SAML2 Single Sign On, that can also be configured by environment properties:
 |Property|Description  |Example
 |--|----|--
-|SSO_PUBLISHED_SITE_URL|The URL of the saml2 endpoint on Weblogic that the external IDP will redirect the user to after authentication.  Note that forward slashs need to be escaped.|https:\/\/chips-sso-test.companieshouse.gov.uk\/saml2
+|SSO_PUBLISHED_SITE_URL|The URL of the saml2 endpoint on Weblogic that the external IDP will redirect the user to after authentication.  Note that forward slashes need to be escaped.|https:\/\/chips-sso-test.companieshouse.gov.uk\/saml2
 |SSO_ENTITY_ID|A text identifier for the environment|sso-identity-chips-sso-test
 |SSO_CHIPS_DEFAULT_URL|The url that the user should be directed to if no redirect URL is provided from the IDP|https:\/\/chips-sso-test.companieshouse.gov.uk\/chips\/cff
 
