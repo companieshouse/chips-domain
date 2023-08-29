@@ -5,6 +5,10 @@
   <security-configuration>
     <name>chipsdomain</name>
     <realm>
+      <sec:authentication-provider xsi:type="wls:saml-authenticatorType">
+        <sec:name>SAML_AUTH</sec:name>
+        <sec:control-flag>SUFFICIENT</sec:control-flag>
+      </sec:authentication-provider>
       <sec:authentication-provider xsi:type="wls:default-authenticatorType">
         <sec:name>DefaultAuthenticator</sec:name>
         <sec:control-flag>SUFFICIENT</sec:control-flag>
@@ -15,7 +19,7 @@
       </sec:authentication-provider>
       <sec:authentication-provider xsi:type="wls:active-directory-authenticatorType">
         <sec:name>AD_LDAP</sec:name>
-        <sec:control-flag>REQUIRED</sec:control-flag>
+        <sec:control-flag>OPTIONAL</sec:control-flag>
         <wls:host></wls:host>
         <wls:port></wls:port>
         <wls:ssl-enabled>true</wls:ssl-enabled>
@@ -33,6 +37,9 @@
         <wls:static-group-name-attribute>cn</wls:static-group-name-attribute>
         <wls:static-group-dns-from-member-dn-filter>(&amp;(member=%M)(objectclass=group))</wls:static-group-dns-from-member-dn-filter>
         <wls:group-membership-searching>off</wls:group-membership-searching>
+      </sec:authentication-provider>
+      <sec:authentication-provider xmlns:sam="http://xmlns.oracle.com/weblogic/security/saml2" xsi:type="sam:saml2-identity-asserterType">
+        <sec:name>SAML_IA</sec:name>
       </sec:authentication-provider>
       <sec:role-mapper xmlns:xac="http://xmlns.oracle.com/weblogic/security/xacml" xsi:type="xac:xacml-role-mapperType">
         <sec:name>XACMLRoleMapper</sec:name>
@@ -154,7 +161,7 @@
       <client-certificate-enforced>false</client-certificate-enforced>
     </network-access-point>
     <server-start>
-      <class-path>/apps/oracle/chipsdomain:/apps/oracle/chipsdomain/chipsconfig/antlr-2.7.6.jar:/apps/oracle/chipsdomain/chipsconfig/log4j.jar:/apps/oracle/chipsdomain/chipsconfig/aqapi12.jar:/apps/oracle/chipsdomain/chipsconfig/aqbridge.jar:/apps/oracle/chipsdomain/chipsconfig/chips_config.jar:/apps/oracle/chipsdomain/chipsconfig/ssoRMI.jar:/apps/oracle/chipsdomain/chipsconfig/rmi_config.jar:/apps/oracle/chipsdomain/chipsconfig:/apps/oracle/chipsdomain/chipsconfig/xsl:/apps/oracle/chipsdomain/chipsconfig/rtfTemplates:/apps/oracle/chipsdomain/chipsconfig/core-renderer.jar:/apps/oracle/chipsdomain/chipsconfig/itext-2.0.8.jar:/apps/oracle/chipsdomain/chipsconfig/chips-tuxedo-library-1.0.0.jar</class-path>
+      <class-path>/apps/oracle/chipsdomain:/apps/oracle/chipsdomain/chipsconfig/xalan.jar:/apps/oracle/chipsdomain/chipsconfig/antlr-2.7.6.jar:/apps/oracle/chipsdomain/chipsconfig/log4j.jar:/apps/oracle/chipsdomain/chipsconfig/aqapi12.jar:/apps/oracle/chipsdomain/chipsconfig/aqbridge.jar:/apps/oracle/chipsdomain/chipsconfig/chips_config.jar:/apps/oracle/chipsdomain/chipsconfig/ssoRMI.jar:/apps/oracle/chipsdomain/chipsconfig/rmi_config.jar:/apps/oracle/chipsdomain/chipsconfig:/apps/oracle/chipsdomain/chipsconfig/xsl:/apps/oracle/chipsdomain/chipsconfig/rtfTemplates:/apps/oracle/chipsdomain/chipsconfig/core-renderer.jar:/apps/oracle/chipsdomain/chipsconfig/itext-2.0.8.jar:/apps/oracle/chipsdomain/chipsconfig/chips-tuxedo-library-1.0.0.jar</class-path>
       <arguments>@start-args@</arguments>
     </server-start>
     <jta-migratable-target>
@@ -162,6 +169,34 @@
       <cluster>wlcluster</cluster>
     </jta-migratable-target>
     <weblogic-plugin-enabled>true</weblogic-plugin-enabled>
+    <single-sign-on-services>
+      <published-site-url>@sso-published-site-url@</published-site-url>
+      <entity-id>@sso-entity-id@</entity-id>
+      <service-provider-enabled>true</service-provider-enabled>
+      <default-url>@sso-chips-default-url@</default-url>
+      <service-provider-artifact-binding-enabled>true</service-provider-artifact-binding-enabled>
+      <service-provider-post-binding-enabled>true</service-provider-post-binding-enabled>
+      <service-provider-preferred-binding>HTTP/POST</service-provider-preferred-binding>
+      <sign-authn-requests>false</sign-authn-requests>
+      <want-assertions-signed>false</want-assertions-signed>
+      <force-authn>false</force-authn>
+      <passive>false</passive>
+      <recipient-check-enabled>true</recipient-check-enabled>
+      <post-one-use-check-enabled>true</post-one-use-check-enabled>
+      <want-transport-layer-security-client-authentication>false</want-transport-layer-security-client-authentication>
+      <want-basic-auth-client-authentication>false</want-basic-auth-client-authentication>
+      <authn-request-max-cache-size>10000</authn-request-max-cache-size>
+      <authn-request-timeout>300</authn-request-timeout>
+      <replicated-cache-enabled>false</replicated-cache-enabled>
+      <metadata-encryption-algorithm>aes128-gcm</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>aes192-gcm</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>aes256-gcm</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>aes128-cbc</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>aes192-cbc</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>aes256-cbc</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>rsa-oaep</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>rsa-oaep-mgf1p</metadata-encryption-algorithm>
+    </single-sign-on-services>
   </server>
   <server>
     <name>wlserver2</name>
@@ -199,7 +234,7 @@
       <client-certificate-enforced>false</client-certificate-enforced>
     </network-access-point>
     <server-start>
-      <class-path>/apps/oracle/chipsdomain:/apps/oracle/chipsdomain/chipsconfig/antlr-2.7.6.jar:/apps/oracle/chipsdomain/chipsconfig/log4j.jar:/apps/oracle/chipsdomain/chipsconfig/aqapi12.jar:/apps/oracle/chipsdomain/chipsconfig/aqbridge.jar:/apps/oracle/chipsdomain/chipsconfig/chips_config.jar:/apps/oracle/chipsdomain/chipsconfig/ssoRMI.jar:/apps/oracle/chipsdomain/chipsconfig/rmi_config.jar:/apps/oracle/chipsdomain/chipsconfig:/apps/oracle/chipsdomain/chipsconfig/xsl:/apps/oracle/chipsdomain/chipsconfig/rtfTemplates:/apps/oracle/chipsdomain/chipsconfig/core-renderer.jar:/apps/oracle/chipsdomain/chipsconfig/itext-2.0.8.jar:/apps/oracle/chipsdomain/chipsconfig/chips-tuxedo-library-1.0.0.jar</class-path>
+      <class-path>/apps/oracle/chipsdomain:/apps/oracle/chipsdomain/chipsconfig/xalan.jar:/apps/oracle/chipsdomain/chipsconfig/antlr-2.7.6.jar:/apps/oracle/chipsdomain/chipsconfig/log4j.jar:/apps/oracle/chipsdomain/chipsconfig/aqapi12.jar:/apps/oracle/chipsdomain/chipsconfig/aqbridge.jar:/apps/oracle/chipsdomain/chipsconfig/chips_config.jar:/apps/oracle/chipsdomain/chipsconfig/ssoRMI.jar:/apps/oracle/chipsdomain/chipsconfig/rmi_config.jar:/apps/oracle/chipsdomain/chipsconfig:/apps/oracle/chipsdomain/chipsconfig/xsl:/apps/oracle/chipsdomain/chipsconfig/rtfTemplates:/apps/oracle/chipsdomain/chipsconfig/core-renderer.jar:/apps/oracle/chipsdomain/chipsconfig/itext-2.0.8.jar:/apps/oracle/chipsdomain/chipsconfig/chips-tuxedo-library-1.0.0.jar</class-path>
       <arguments>@start-args@</arguments>
     </server-start>
     <jta-migratable-target>
@@ -207,6 +242,34 @@
       <cluster>wlcluster</cluster>
     </jta-migratable-target>
     <weblogic-plugin-enabled>true</weblogic-plugin-enabled>
+    <single-sign-on-services>
+      <published-site-url>@sso-published-site-url@</published-site-url>
+      <entity-id>@sso-entity-id@</entity-id>
+      <service-provider-enabled>true</service-provider-enabled>
+      <default-url>@sso-chips-default-url@</default-url>
+      <service-provider-artifact-binding-enabled>true</service-provider-artifact-binding-enabled>
+      <service-provider-post-binding-enabled>true</service-provider-post-binding-enabled>
+      <service-provider-preferred-binding>HTTP/POST</service-provider-preferred-binding>
+      <sign-authn-requests>false</sign-authn-requests>
+      <want-assertions-signed>false</want-assertions-signed>
+      <force-authn>false</force-authn>
+      <passive>false</passive>
+      <recipient-check-enabled>true</recipient-check-enabled>
+      <post-one-use-check-enabled>true</post-one-use-check-enabled>
+      <want-transport-layer-security-client-authentication>false</want-transport-layer-security-client-authentication>
+      <want-basic-auth-client-authentication>false</want-basic-auth-client-authentication>
+      <authn-request-max-cache-size>10000</authn-request-max-cache-size>
+      <authn-request-timeout>300</authn-request-timeout>
+      <replicated-cache-enabled>false</replicated-cache-enabled>
+      <metadata-encryption-algorithm>aes128-gcm</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>aes192-gcm</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>aes256-gcm</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>aes128-cbc</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>aes192-cbc</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>aes256-cbc</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>rsa-oaep</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>rsa-oaep-mgf1p</metadata-encryption-algorithm>
+    </single-sign-on-services>
   </server>
   <server>
     <name>wlserver3</name>
@@ -244,7 +307,7 @@
       <client-certificate-enforced>false</client-certificate-enforced>
     </network-access-point>
     <server-start>
-      <class-path>/apps/oracle/chipsdomain:/apps/oracle/chipsdomain/chipsconfig/antlr-2.7.6.jar:/apps/oracle/chipsdomain/chipsconfig/log4j.jar:/apps/oracle/chipsdomain/chipsconfig/aqapi12.jar:/apps/oracle/chipsdomain/chipsconfig/aqbridge.jar:/apps/oracle/chipsdomain/chipsconfig/chips_config.jar:/apps/oracle/chipsdomain/chipsconfig/ssoRMI.jar:/apps/oracle/chipsdomain/chipsconfig/rmi_config.jar:/apps/oracle/chipsdomain/chipsconfig:/apps/oracle/chipsdomain/chipsconfig/xsl:/apps/oracle/chipsdomain/chipsconfig/rtfTemplates:/apps/oracle/chipsdomain/chipsconfig/core-renderer.jar:/apps/oracle/chipsdomain/chipsconfig/itext-2.0.8.jar:/apps/oracle/chipsdomain/chipsconfig/chips-tuxedo-library-1.0.0.jar</class-path>
+      <class-path>/apps/oracle/chipsdomain:/apps/oracle/chipsdomain/chipsconfig/xalan.jar:/apps/oracle/chipsdomain/chipsconfig/antlr-2.7.6.jar:/apps/oracle/chipsdomain/chipsconfig/log4j.jar:/apps/oracle/chipsdomain/chipsconfig/aqapi12.jar:/apps/oracle/chipsdomain/chipsconfig/aqbridge.jar:/apps/oracle/chipsdomain/chipsconfig/chips_config.jar:/apps/oracle/chipsdomain/chipsconfig/ssoRMI.jar:/apps/oracle/chipsdomain/chipsconfig/rmi_config.jar:/apps/oracle/chipsdomain/chipsconfig:/apps/oracle/chipsdomain/chipsconfig/xsl:/apps/oracle/chipsdomain/chipsconfig/rtfTemplates:/apps/oracle/chipsdomain/chipsconfig/core-renderer.jar:/apps/oracle/chipsdomain/chipsconfig/itext-2.0.8.jar:/apps/oracle/chipsdomain/chipsconfig/chips-tuxedo-library-1.0.0.jar</class-path>
       <arguments>@start-args@</arguments>
     </server-start>
     <jta-migratable-target>
@@ -252,6 +315,34 @@
       <cluster>wlcluster</cluster>
     </jta-migratable-target>
     <weblogic-plugin-enabled>true</weblogic-plugin-enabled>
+    <single-sign-on-services>
+      <published-site-url>@sso-published-site-url@</published-site-url>
+      <entity-id>@sso-entity-id@</entity-id>
+      <service-provider-enabled>true</service-provider-enabled>
+      <default-url>@sso-chips-default-url@</default-url>
+      <service-provider-artifact-binding-enabled>true</service-provider-artifact-binding-enabled>
+      <service-provider-post-binding-enabled>true</service-provider-post-binding-enabled>
+      <service-provider-preferred-binding>HTTP/POST</service-provider-preferred-binding>
+      <sign-authn-requests>false</sign-authn-requests>
+      <want-assertions-signed>false</want-assertions-signed>
+      <force-authn>false</force-authn>
+      <passive>false</passive>
+      <recipient-check-enabled>true</recipient-check-enabled>
+      <post-one-use-check-enabled>true</post-one-use-check-enabled>
+      <want-transport-layer-security-client-authentication>false</want-transport-layer-security-client-authentication>
+      <want-basic-auth-client-authentication>false</want-basic-auth-client-authentication>
+      <authn-request-max-cache-size>10000</authn-request-max-cache-size>
+      <authn-request-timeout>300</authn-request-timeout>
+      <replicated-cache-enabled>false</replicated-cache-enabled>
+      <metadata-encryption-algorithm>aes128-gcm</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>aes192-gcm</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>aes256-gcm</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>aes128-cbc</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>aes192-cbc</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>aes256-cbc</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>rsa-oaep</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>rsa-oaep-mgf1p</metadata-encryption-algorithm>
+    </single-sign-on-services>
   </server>
   <server>
     <name>wlserver4</name>
@@ -289,7 +380,7 @@
       <client-certificate-enforced>false</client-certificate-enforced>
     </network-access-point>
     <server-start>
-      <class-path>/apps/oracle/chipsdomain:/apps/oracle/chipsdomain/chipsconfig/antlr-2.7.6.jar:/apps/oracle/chipsdomain/chipsconfig/log4j.jar:/apps/oracle/chipsdomain/chipsconfig/aqapi12.jar:/apps/oracle/chipsdomain/chipsconfig/aqbridge.jar:/apps/oracle/chipsdomain/chipsconfig/chips_config.jar:/apps/oracle/chipsdomain/chipsconfig/ssoRMI.jar:/apps/oracle/chipsdomain/chipsconfig/rmi_config.jar:/apps/oracle/chipsdomain/chipsconfig:/apps/oracle/chipsdomain/chipsconfig/xsl:/apps/oracle/chipsdomain/chipsconfig/rtfTemplates:/apps/oracle/chipsdomain/chipsconfig/core-renderer.jar:/apps/oracle/chipsdomain/chipsconfig/itext-2.0.8.jar:/apps/oracle/chipsdomain/chipsconfig/chips-tuxedo-library-1.0.0.jar</class-path>
+      <class-path>/apps/oracle/chipsdomain:/apps/oracle/chipsdomain/chipsconfig/xalan.jar:/apps/oracle/chipsdomain/chipsconfig/antlr-2.7.6.jar:/apps/oracle/chipsdomain/chipsconfig/log4j.jar:/apps/oracle/chipsdomain/chipsconfig/aqapi12.jar:/apps/oracle/chipsdomain/chipsconfig/aqbridge.jar:/apps/oracle/chipsdomain/chipsconfig/chips_config.jar:/apps/oracle/chipsdomain/chipsconfig/ssoRMI.jar:/apps/oracle/chipsdomain/chipsconfig/rmi_config.jar:/apps/oracle/chipsdomain/chipsconfig:/apps/oracle/chipsdomain/chipsconfig/xsl:/apps/oracle/chipsdomain/chipsconfig/rtfTemplates:/apps/oracle/chipsdomain/chipsconfig/core-renderer.jar:/apps/oracle/chipsdomain/chipsconfig/itext-2.0.8.jar:/apps/oracle/chipsdomain/chipsconfig/chips-tuxedo-library-1.0.0.jar</class-path>
       <arguments>@start-args@</arguments>
     </server-start>
     <jta-migratable-target>
@@ -297,6 +388,34 @@
       <cluster>wlcluster</cluster>
     </jta-migratable-target>
     <weblogic-plugin-enabled>true</weblogic-plugin-enabled>
+    <single-sign-on-services>
+      <published-site-url>@sso-published-site-url@</published-site-url>
+      <entity-id>@sso-entity-id@</entity-id>
+      <service-provider-enabled>true</service-provider-enabled>
+      <default-url>@sso-chips-default-url@</default-url>
+      <service-provider-artifact-binding-enabled>true</service-provider-artifact-binding-enabled>
+      <service-provider-post-binding-enabled>true</service-provider-post-binding-enabled>
+      <service-provider-preferred-binding>HTTP/POST</service-provider-preferred-binding>
+      <sign-authn-requests>false</sign-authn-requests>
+      <want-assertions-signed>false</want-assertions-signed>
+      <force-authn>false</force-authn>
+      <passive>false</passive>
+      <recipient-check-enabled>true</recipient-check-enabled>
+      <post-one-use-check-enabled>true</post-one-use-check-enabled>
+      <want-transport-layer-security-client-authentication>false</want-transport-layer-security-client-authentication>
+      <want-basic-auth-client-authentication>false</want-basic-auth-client-authentication>
+      <authn-request-max-cache-size>10000</authn-request-max-cache-size>
+      <authn-request-timeout>300</authn-request-timeout>
+      <replicated-cache-enabled>false</replicated-cache-enabled>
+      <metadata-encryption-algorithm>aes128-gcm</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>aes192-gcm</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>aes256-gcm</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>aes128-cbc</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>aes192-cbc</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>aes256-cbc</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>rsa-oaep</metadata-encryption-algorithm>
+      <metadata-encryption-algorithm>rsa-oaep-mgf1p</metadata-encryption-algorithm>
+    </single-sign-on-services>
   </server>
   <cluster>
     <name>wlcluster</name>
