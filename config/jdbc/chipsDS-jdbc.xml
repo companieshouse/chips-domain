@@ -21,7 +21,7 @@
     <initial-capacity>1</initial-capacity>
     <max-capacity>25</max-capacity>
     <capacity-increment>1</capacity-increment>
-    <shrink-frequency-seconds>300</shrink-frequency-seconds>
+    <shrink-frequency-seconds>0</shrink-frequency-seconds>
     <highest-num-waiters>2147483647</highest-num-waiters>
     <connection-creation-retry-frequency-seconds>0</connection-creation-retry-frequency-seconds>
     <connection-reserve-timeout-seconds>10</connection-reserve-timeout-seconds>
