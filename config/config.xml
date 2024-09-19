@@ -569,6 +569,11 @@
       <target>wlcluster</target>
       <count>5</count>
     </max-threads-constraint>
+    <max-threads-constraint>
+      <name>MaxThreadsConstraint-1</name>
+      <target>wlcluster</target>
+      <count>3</count>
+    </max-threads-constraint>
     <work-manager>
       <name>JMSWorkManager</name>
       <target>wlcluster</target>
@@ -578,7 +583,7 @@
     <work-manager>
       <name>OfficerBulkJMSWorkManager</name>
       <target>wlcluster</target>
-      <max-threads-constraint>MaxThreadsConstraint-0</max-threads-constraint>
+      <max-threads-constraint>MaxThreadsConstraint-1</max-threads-constraint>
       <ignore-stuck-threads>false</ignore-stuck-threads>
     </work-manager>
     <work-manager>
