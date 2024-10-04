@@ -463,4 +463,28 @@
     </delivery-failure-params>
     <jndi-name>uk.gov.ch.chips.jms.ChipsGenericQueue</jndi-name>
   </uniform-distributed-queue>
+  <uniform-distributed-queue name="AcspUsersQueue">
+    <sub-deployment-name>wlcluster</sub-deployment-name>
+    <default-targeting-enabled>false</default-targeting-enabled>
+    <delivery-params-overrides>
+      <redelivery-delay>60000</redelivery-delay>
+    </delivery-params-overrides>
+    <delivery-failure-params>
+      <error-destination>AcspUsersErrorQueue</error-destination>
+      <redelivery-limit>10</redelivery-limit>
+      <expiration-policy>Discard</expiration-policy>
+    </delivery-failure-params>
+    <jndi-name>uk.gov.ch.chips.jms.AcspUsersQueue</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+    <forward-delay>-1</forward-delay>
+    <reset-delivery-count-on-forward>true</reset-delivery-count-on-forward>
+  </uniform-distributed-queue>
+  <uniform-distributed-queue name="AcspUsersErrorQueue">
+    <sub-deployment-name>wlcluster</sub-deployment-name>
+    <default-targeting-enabled>false</default-targeting-enabled>
+    <jndi-name>uk.gov.ch.chips.jms.AcspUsersErrorQueue</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+    <forward-delay>-1</forward-delay>
+    <reset-delivery-count-on-forward>true</reset-delivery-count-on-forward>
+  </uniform-distributed-queue>
 </weblogic-jms>
