@@ -42,6 +42,7 @@ cmo.setValue(db_user_staffDS)
 
 ## Override the client machine property to include the instance name
 errorMessage='This error is ok. v$session.machine property already present - will update it.'
+
 # chipsDS
 cd('/JDBCSystemResource/chipsDS/JdbcResource/chipsDS/JDBCDriverParams/NO_NAME_0/Properties/NO_NAME_0')
 try:
@@ -51,6 +52,7 @@ except:
 
 cd('Property/v$session.machine')
 set('SysPropValue', db_client_machine_override)
+
 # staffwareDs
 cd('/JDBCSystemResource/staffwareDs/JdbcResource/staffwareDs/JDBCDriverParams/NO_NAME_0/Properties/NO_NAME_0')
 try:
@@ -60,6 +62,7 @@ except:
 
 cd('Property/v$session.machine')
 set('SysPropValue', db_client_machine_override)
+
 # chipsBulkDS
 cd('/JDBCSystemResource/chipsBulkDS/JdbcResource/chipsBulkDS/JDBCDriverParams/NO_NAME_0/Properties/NO_NAME_0')
 try:
