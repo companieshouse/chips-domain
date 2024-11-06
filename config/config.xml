@@ -128,6 +128,7 @@
   <server>
     <name>wlserver1</name>
     <max-message-size>100000000</max-message-size>
+    <complete-message-timeout>300</complete-message-timeout>
     <ssl>
       <hostname-verifier xsi:nil="true"></hostname-verifier>
       <hostname-verification-ignored>true</hostname-verification-ignored>
@@ -201,6 +202,7 @@
   <server>
     <name>wlserver2</name>
     <max-message-size>100000000</max-message-size>
+    <complete-message-timeout>300</complete-message-timeout>
     <ssl>
       <hostname-verifier xsi:nil="true"></hostname-verifier>
       <hostname-verification-ignored>true</hostname-verification-ignored>
@@ -274,6 +276,7 @@
   <server>
     <name>wlserver3</name>
     <max-message-size>100000000</max-message-size>
+    <complete-message-timeout>300</complete-message-timeout>
     <ssl>
       <hostname-verifier xsi:nil="true"></hostname-verifier>
       <hostname-verification-ignored>true</hostname-verification-ignored>
@@ -347,6 +350,7 @@
   <server>
     <name>wlserver4</name>
     <max-message-size>100000000</max-message-size>
+    <complete-message-timeout>300</complete-message-timeout>
     <ssl>
       <hostname-verifier xsi:nil="true"></hostname-verifier>
       <hostname-verification-ignored>true</hostname-verification-ignored>
