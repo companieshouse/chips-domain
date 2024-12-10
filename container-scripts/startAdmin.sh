@@ -49,7 +49,7 @@ ${ORACLE_HOME}/oracle_common/common/bin/wlst.sh -skipWLSModuleScanning ${ORACLE_
 export DERBY_FLAG=false
 
 # Update the CLASSPATH of the Admin server to allow viewing of EF JMS messages and for the swadmin application
-export CLASSPATH=${DOMAIN_HOME}/chipsconfig/jmstool.jar:${DOMAIN_HOME}/chipsconfig/log4j.jar:${DOMAIN_HOME}/chipsconfig/jdom.jar:${DOMAIN_HOME}/chipsconfig/ssoRMI.jar:${DOMAIN_HOME}/chipsconfig/aqapi12.jar:${DOMAIN_HOME}/chipsconfig:${CLASSPATH}
+export CLASSPATH=${DOMAIN_HOME}/chipsconfig/jmstool.jar:${DOMAIN_HOME}/chipsconfig/chips-common.jar:${DOMAIN_HOME}/chipsconfig/log4j.jar:${DOMAIN_HOME}/chipsconfig/jdom.jar:${DOMAIN_HOME}/chipsconfig/ssoRMI.jar:${DOMAIN_HOME}/chipsconfig/aqapi12.jar:${DOMAIN_HOME}/chipsconfig:${CLASSPATH}
 
 # Set the startup params of the Admin server
 export JAVA_OPTIONS="${JAVA_OPTIONS} ${ADMIN_START_ARGS}"

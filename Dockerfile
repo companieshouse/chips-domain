@@ -34,6 +34,7 @@ RUN cd ${DOMAIN_NAME}/chipsconfig && \
     curl ${ARTIFACTORY_BASE_URL}/libs-release/com/staffware/ssoRMI/11.4.1/ssoRMI-11.4.1.jar -o ssoRMI.jar && \
     curl ${ARTIFACTORY_BASE_URL}/libs-release/org/jdom/jdom/1.1/jdom-1.1.jar -o jdom.jar && \
     curl ${ARTIFACTORY_BASE_URL}/local-ch-release/uk/gov/companieshouse/jmstool/1.2.0/jmstool-1.2.0.jar -o jmstool.jar && \
+    curl ${ARTIFACTORY_BASE_URL}/local-ch-release/uk/gov/companieshouse/chips_common/0.0.0-alpha1/chips_common-0.0.0-alpha1.jar -o chips-common.jar && \
     curl ${ARTIFACTORY_BASE_URL}/libs-release/uk/gov/companieshouse/weblogic-tux-hostname-patch/1.0.0/weblogic-tux-hostname-patch-1.0.0.jar -o weblogic-tux-hostname-patch-1.0.0.jar && \
     curl ${ARTIFACTORY_BASE_URL}/libs-release/xalan/xalan/2.7.0/xalan-2.7.0.jar -o xalan.jar && \
     cd .. && \
