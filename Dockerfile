@@ -55,7 +55,7 @@ USER root
 RUN cd ${JAVA_HOME}/jre/lib && \
     curl ${ARTIFACTORY_BASE_URL}/uk/gov/companieshouse/chips-fop-fonts/1.0.1/chips-fop-fonts-1.0.1.tar -o chips-fop-fonts.tar && \
     tar -xvf chips-fop-fonts.tar && rm chips-fop-fonts.tar && \
-    ln -s fonts /usr/share/fonts && \
+    ln -s ${JAVA_HOME}/jre/lib/fonts /usr/share/fonts && \
     mkdir -p endorsed && cd endorsed && curl ${ARTIFACTORY_BASE_URL}/xalan/xalan/2.7.0/xalan-2.7.0.jar -o xalan-2.7.0.jar
 
 # Copy across csi web app and correct permissions of upload folder
