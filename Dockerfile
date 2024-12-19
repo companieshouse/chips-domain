@@ -49,15 +49,14 @@ RUN $ORACLE_HOME/oracle_common/common/bin/wlst.sh -skipWLSModuleScanning contain
 RUN sed -i 's/umask 027/umask 022/' ${DOMAIN_NAME}/bin/startWebLogic.sh && \
     sed -i 's/umask 027/umask 022/' ${ORACLE_HOME}/wlserver/server/bin/startNodeManager.sh
 
-# Download endorsed libs from artifactory and install into JRE
+# Download fonts and endorsed libs from artifactory and install into JRE and OS
+# OS font location is used by PDFBox and JRE location by FOP
 USER root
 RUN cd ${JAVA_HOME}/jre/lib && \
-    mkdir -p endorsed && cd endorsed && curl ${ARTIFACTORY_BASE_URL}/xalan/xalan/2.7.0/xalan-2.7.0.jar -o xalan-2.7.0.jar
-
-# Download FOP/PDFBox fonts from artifactory and install into OS
-RUN mkdir -p /usr/share/fonts && cd /usr/share && \
     curl ${ARTIFACTORY_BASE_URL}/uk/gov/companieshouse/chips-fop-fonts/1.0.1/chips-fop-fonts-1.0.1.tar -o chips-fop-fonts.tar && \
-    tar -xvf chips-fop-fonts.tar && rm chips-fop-fonts.tar
+    tar -xvf chips-fop-fonts.tar && rm chips-fop-fonts.tar && \
+    ln -s fonts /usr/share/fonts && \
+    mkdir -p endorsed && cd endorsed && curl ${ARTIFACTORY_BASE_URL}/xalan/xalan/2.7.0/xalan-2.7.0.jar -o xalan-2.7.0.jar
 
 # Copy across csi web app and correct permissions of upload folder
 COPY --chown=weblogic:weblogic csi ${DOMAIN_NAME}/upload/csi/
