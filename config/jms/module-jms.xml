@@ -24,30 +24,6 @@
       <attach-jmsx-user-id>false</attach-jmsx-user-id>
     </security-params>
   </connection-factory>
-  <uniform-distributed-queue name="EmailQueue">
-    <sub-deployment-name>wlcluster</sub-deployment-name>
-    <default-targeting-enabled>false</default-targeting-enabled>
-    <delivery-params-overrides>
-      <redelivery-delay>300000</redelivery-delay>
-    </delivery-params-overrides>
-    <delivery-failure-params>
-      <error-destination>EmailErrorQueue</error-destination>
-      <redelivery-limit>1</redelivery-limit>
-      <expiration-policy>Discard</expiration-policy>
-    </delivery-failure-params>
-    <jndi-name>uk.gov.ch.chips.jms.outbound.EmailQueue</jndi-name>
-    <load-balancing-policy>Round-Robin</load-balancing-policy>
-    <forward-delay>-1</forward-delay>
-    <reset-delivery-count-on-forward>true</reset-delivery-count-on-forward>
-  </uniform-distributed-queue>
-  <uniform-distributed-queue name="EmailErrorQueue">
-    <sub-deployment-name>wlcluster</sub-deployment-name>
-    <default-targeting-enabled>false</default-targeting-enabled>
-    <jndi-name>uk.gov.ch.chips.jms.EmailErrorQueue</jndi-name>
-    <load-balancing-policy>Round-Robin</load-balancing-policy>
-    <forward-delay>-1</forward-delay>
-    <reset-delivery-count-on-forward>true</reset-delivery-count-on-forward>
-  </uniform-distributed-queue>
   <uniform-distributed-queue name="TransactionListenerQueue">
     <sub-deployment-name>wlcluster</sub-deployment-name>
     <default-targeting-enabled>false</default-targeting-enabled>
@@ -114,22 +90,6 @@
     <jndi-name>uk.gov.ch.chips.jms.OfficerEventQueue</jndi-name>
     <load-balancing-policy>Round-Robin</load-balancing-policy>
   </uniform-distributed-queue>
-  <uniform-distributed-queue name="JaffwareQueue">
-    <sub-deployment-name>1p</sub-deployment-name>
-    <default-targeting-enabled>false</default-targeting-enabled>
-    <delivery-params-overrides>
-      <redelivery-delay>300000</redelivery-delay>
-    </delivery-params-overrides>
-    <delivery-failure-params>
-      <error-destination>JaffwareErrorQueue</error-destination>
-      <redelivery-limit>1</redelivery-limit>
-      <expiration-policy>Discard</expiration-policy>
-    </delivery-failure-params>
-    <jndi-name>uk.gov.ch.chips.jms.JaffwareQueue</jndi-name>
-    <load-balancing-policy>Round-Robin</load-balancing-policy>
-    <forward-delay>-1</forward-delay>
-    <reset-delivery-count-on-forward>true</reset-delivery-count-on-forward>
-  </uniform-distributed-queue>
   <uniform-distributed-queue name="StaffwareQueue">
     <sub-deployment-name>wlcluster</sub-deployment-name>
     <default-targeting-enabled>false</default-targeting-enabled>
@@ -157,36 +117,6 @@
       <expiration-policy>Discard</expiration-policy>
     </delivery-failure-params>
     <jndi-name>uk.gov.ch.chips.jms.EfilingImageQueue</jndi-name>
-    <load-balancing-policy>Round-Robin</load-balancing-policy>
-  </uniform-distributed-queue>
-  <uniform-distributed-queue name="InsolvencyPursuitQueue">
-    <sub-deployment-name>wlcluster</sub-deployment-name>
-    <default-targeting-enabled>false</default-targeting-enabled>
-    <delivery-params-overrides>
-      <redelivery-delay>300000</redelivery-delay>
-    </delivery-params-overrides>
-    <delivery-failure-params>
-      <error-destination>InsolvencyPursuitErrorQueue</error-destination>
-      <redelivery-limit>1</redelivery-limit>
-      <expiration-policy>Discard</expiration-policy>
-    </delivery-failure-params>
-    <jndi-name>uk.gov.ch.chips.jms.InsolvencyPursuitQueue</jndi-name>
-    <load-balancing-policy>Round-Robin</load-balancing-policy>
-    <forward-delay>-1</forward-delay>
-    <reset-delivery-count-on-forward>true</reset-delivery-count-on-forward>
-  </uniform-distributed-queue>
-  <uniform-distributed-queue name="CedarQueue">
-    <sub-deployment-name>wlcluster</sub-deployment-name>
-    <default-targeting-enabled>false</default-targeting-enabled>
-    <delivery-params-overrides>
-      <redelivery-delay>300000</redelivery-delay>
-    </delivery-params-overrides>
-    <delivery-failure-params>
-      <error-destination>CedarErrorQueue</error-destination>
-      <redelivery-limit>1</redelivery-limit>
-      <expiration-policy>Discard</expiration-policy>
-    </delivery-failure-params>
-    <jndi-name>uk.gov.ch.chips.jms.CedarQueue</jndi-name>
     <load-balancing-policy>Round-Robin</load-balancing-policy>
   </uniform-distributed-queue>
   <uniform-distributed-queue name="BatchManagerQueue">
@@ -217,20 +147,6 @@
       <expiration-policy>Discard</expiration-policy>
     </delivery-failure-params>
     <jndi-name>uk.gov.ch.chips.jms.OfficerBulkQueue</jndi-name>
-    <load-balancing-policy>Round-Robin</load-balancing-policy>
-  </uniform-distributed-queue>
-  <uniform-distributed-queue name="PrintQueue">
-    <sub-deployment-name>wlcluster</sub-deployment-name>
-    <default-targeting-enabled>false</default-targeting-enabled>
-    <delivery-params-overrides>
-      <redelivery-delay>300000</redelivery-delay>
-    </delivery-params-overrides>
-    <delivery-failure-params>
-      <error-destination>EfilingRequestErrorQueue</error-destination>
-      <redelivery-limit>1</redelivery-limit>
-      <expiration-policy>Discard</expiration-policy>
-    </delivery-failure-params>
-    <jndi-name>uk.gov.ch.chips.jms.PrintQueue</jndi-name>
     <load-balancing-policy>Round-Robin</load-balancing-policy>
   </uniform-distributed-queue>
   <uniform-distributed-queue name="EfilingShareholdingsQueue">
@@ -303,14 +219,6 @@
     <forward-delay>-1</forward-delay>
     <reset-delivery-count-on-forward>true</reset-delivery-count-on-forward>
   </uniform-distributed-queue>
-  <uniform-distributed-queue name="CedarErrorQueue">
-    <sub-deployment-name>wlcluster</sub-deployment-name>
-    <default-targeting-enabled>false</default-targeting-enabled>
-    <jndi-name>uk.gov.ch.chips.jms.CedarErrorQueue</jndi-name>
-    <load-balancing-policy>Round-Robin</load-balancing-policy>
-    <forward-delay>-1</forward-delay>
-    <reset-delivery-count-on-forward>true</reset-delivery-count-on-forward>
-  </uniform-distributed-queue>
   <uniform-distributed-queue name="EfilingRequestErrorQueue">
     <sub-deployment-name>wlcluster</sub-deployment-name>
     <default-targeting-enabled>false</default-targeting-enabled>
@@ -339,28 +247,6 @@
     <sub-deployment-name>wlcluster</sub-deployment-name>
     <default-targeting-enabled>false</default-targeting-enabled>
     <jndi-name>uk.gov.ch.chips.jms.OfficerEventErrorQueue</jndi-name>
-    <load-balancing-policy>Round-Robin</load-balancing-policy>
-    <forward-delay>-1</forward-delay>
-    <reset-delivery-count-on-forward>true</reset-delivery-count-on-forward>
-  </uniform-distributed-queue>
-  <uniform-distributed-queue name="InsolvencyPursuitErrorQueue">
-    <sub-deployment-name>wlcluster</sub-deployment-name>
-    <default-targeting-enabled>false</default-targeting-enabled>
-    <delivery-params-overrides>
-      <redelivery-delay>-1</redelivery-delay>
-    </delivery-params-overrides>
-    <delivery-failure-params>
-      <redelivery-limit>-1</redelivery-limit>
-    </delivery-failure-params>
-    <jndi-name>uk.gov.ch.chips.jms.InsolvencyPursuitErrorQueue</jndi-name>
-    <load-balancing-policy>Round-Robin</load-balancing-policy>
-    <forward-delay>-1</forward-delay>
-    <reset-delivery-count-on-forward>true</reset-delivery-count-on-forward>
-  </uniform-distributed-queue>
-  <uniform-distributed-queue name="JaffwareErrorQueue">
-    <sub-deployment-name>1p</sub-deployment-name>
-    <default-targeting-enabled>false</default-targeting-enabled>
-    <jndi-name>uk.gov.ch.chips.jms.JaffwareErrorQueue</jndi-name>
     <load-balancing-policy>Round-Robin</load-balancing-policy>
     <forward-delay>-1</forward-delay>
     <reset-delivery-count-on-forward>true</reset-delivery-count-on-forward>
