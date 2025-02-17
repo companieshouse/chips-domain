@@ -111,20 +111,25 @@
     <appender-ref ref="ConsoleAppender"/>
   </logger>
 
-<logger name="uk.gov.ch.imagesender.client.ImageToS3StoreSender" additivity="false">
-  <level value="INFO"/>
-  <appender-ref ref="ConsoleAppender"/>
-</logger>
+  <logger name="uk.gov.ch.imagesender.client.ImageToS3StoreSender" additivity="false">
+    <level value="INFO"/>
+    <appender-ref ref="ConsoleAppender"/>
+  </logger>
 
-<logger name="uk.gov.ch.imagesender.dao.impl.TemporaryImageStoreFileSystemDaoImpl" additivity="false">
-  <level value="DEBUG"/>
-  <appender-ref ref="ConsoleAppender"/>
-</logger>
+  <logger name="uk.gov.ch.imagesender.dao.impl.TemporaryImageStoreFileSystemDaoImpl" additivity="false">
+    <level value="DEBUG"/>
+    <appender-ref ref="ConsoleAppender"/>
+  </logger>
 
-<logger name="uk.gov.ch.cap.server.image.RemoteElectronicFOPImage" additivity="false">
-  <level value="INFO"/>
-  <appender-ref ref="ConsoleAppender"/>
-</logger>
+  <logger name="uk.gov.ch.cap.server.image.RemoteElectronicFOPImage" additivity="false">
+    <level value="INFO"/>
+    <appender-ref ref="ConsoleAppender"/>
+  </logger>
+
+  <logger name="uk.gov.ch.chips.server.workflow.ProcessWorkObjectRetry" additivity="false">
+    <level value="INFO"/>
+    <appender-ref ref="ConsoleAppender"/>
+  </logger>
 
   <!-- Root logger -->
   <root>
