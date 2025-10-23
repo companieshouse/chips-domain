@@ -1,4 +1,4 @@
-FROM 300288021642.dkr.ecr.eu-west-2.amazonaws.com/ch-weblogic:1.5.11
+FROM 300288021642.dkr.ecr.eu-west-2.amazonaws.com/ch-weblogic:2.0.0
 
 # IMPORTANT - the default admin password should be supplied as a build arg
 # e.g. --build-arg ADMIN_PASSWORD=notsecure123.  This password will be visible in the image
@@ -52,19 +52,20 @@ RUN sed -i 's/umask 027/umask 022/' ${DOMAIN_NAME}/bin/startWebLogic.sh && \
 # Download fonts and endorsed libs from artifactory and install into JRE and OS
 # OS font location is used by PDFBox and JRE location by FOP
 USER root
-RUN cd ${JAVA_HOME}/jre/lib && \
+RUN cd ${JAVA_HOME}/lib && \
     curl ${ARTIFACTORY_BASE_URL}/uk/gov/companieshouse/chips-fop-fonts/1.0.1/chips-fop-fonts-1.0.1.tar -o chips-fop-fonts.tar && \
     tar -xvf chips-fop-fonts.tar && rm chips-fop-fonts.tar && \
-    ln -s ${JAVA_HOME}/jre/lib/fonts /usr/share/fonts && \
-    mkdir -p endorsed && cd endorsed && curl ${ARTIFACTORY_BASE_URL}/xalan/xalan/2.7.0/xalan-2.7.0.jar -o xalan-2.7.0.jar
+    ln -s ${JAVA_HOME}/lib/fonts /usr/share/fonts 
 
 # Copy across csi web app and correct permissions of upload folder
 COPY --chown=weblogic:weblogic csi ${DOMAIN_NAME}/upload/csi/
 RUN chown weblogic:weblogic ${DOMAIN_NAME}/upload
 
-# Install gettext to provide envsubst
+# Install gettext to provide envsubst and freetype for FOP
 USER root
 RUN yum -y install gettext && \
+    yum -y install freetype && \
+    yum -y install fontconfig && \
     yum clean all && \
     rm -rf /var/cache/yum
 
@@ -91,6 +92,5 @@ COPY --chown=weblogic:weblogic appdynamics/* /opt/appdynamics/AppServerAgent/
 RUN if [ -f /opt/appdynamics/AppServerAgent/startAppDynamics.sh ]; then \
       chmod 754 /opt/appdynamics/AppServerAgent/startAppDynamics.sh; \       
     fi
-
 
 CMD ["bash"]
