@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <domain xmlns="http://xmlns.oracle.com/weblogic/domain" xmlns:sec="http://xmlns.oracle.com/weblogic/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wls="http://xmlns.oracle.com/weblogic/security/wls" xsi:schemaLocation="http://xmlns.oracle.com/weblogic/security/wls http://xmlns.oracle.com/weblogic/security/wls/1.0/wls.xsd http://xmlns.oracle.com/weblogic/domain http://xmlns.oracle.com/weblogic/1.0/domain.xsd http://xmlns.oracle.com/weblogic/security/xacml http://xmlns.oracle.com/weblogic/security/xacml/1.0/xacml.xsd http://xmlns.oracle.com/weblogic/security/providers/passwordvalidator http://xmlns.oracle.com/weblogic/security/providers/passwordvalidator/1.0/passwordvalidator.xsd http://xmlns.oracle.com/weblogic/security http://xmlns.oracle.com/weblogic/1.0/security.xsd">
   <name>chipsdomain</name>
-  <domain-version>12.2.1.4.0</domain-version>
+  <domain-version>14.1.2.0.0</domain-version>
   <security-configuration>
     <name>chipsdomain</name>
     <realm>
@@ -16,6 +16,7 @@
       <sec:authentication-provider xsi:type="wls:default-identity-asserterType">
         <sec:name>DefaultIdentityAsserter</sec:name>
         <sec:active-type>AuthenticatedUser</sec:active-type>
+        <sec:active-type>weblogic-jwt-token</sec:active-type>
       </sec:authentication-provider>
       <sec:authentication-provider xsi:type="wls:active-directory-authenticatorType">
         <sec:name>AD_LDAP</sec:name>
@@ -26,13 +27,12 @@
         <wls:user-name-attribute>sAMAccountName</wls:user-name-attribute>
         <wls:principal></wls:principal>
         <wls:user-base-dn></wls:user-base-dn>
-        <wls:credential-encrypted></wls:credential-encrypted>
         <wls:cache-enabled>false</wls:cache-enabled>
         <wls:user-from-name-filter>(&amp;(sAMAccountName=%u)(objectclass=user))</wls:user-from-name-filter>
         <wls:group-base-dn></wls:group-base-dn>
         <wls:group-search-scope>onelevel</wls:group-search-scope>
-        <wls:group-from-name-filter>(&amp;(cn=%g)(objectclass=group))</wls:group-from-name-filter>
         <wls:connect-timeout>5</wls:connect-timeout>
+        <wls:group-from-name-filter>(&amp;(cn=%g)(objectclass=group))</wls:group-from-name-filter>
         <wls:static-group-object-class>group</wls:static-group-object-class>
         <wls:static-group-name-attribute>cn</wls:static-group-name-attribute>
         <wls:static-group-dns-from-member-dn-filter>(&amp;(member=%M)(objectclass=group))</wls:static-group-dns-from-member-dn-filter>
@@ -109,6 +109,7 @@
       <rotation-type>byTime</rotation-type>
       <file-count>7</file-count>
     </log>
+    <listen-port>7001</listen-port>
     <listen-address>wladmin</listen-address>
     <network-access-point>
       <name>t3s-channel</name>
@@ -426,7 +427,6 @@
     <cluster-address>wlserver1:7001,wlserver2:7001,wlserver3:7001,wlserver4:7001</cluster-address>
     <cluster-messaging-mode>unicast</cluster-messaging-mode>
   </cluster>
-  <production-mode-enabled>true</production-mode-enabled>
   <embedded-ldap>
     <name>chipsdomain</name>
     <credential-encrypted></credential-encrypted>
@@ -465,6 +465,16 @@
     <source-path>upload/swadmin.war</source-path>
     <security-dd-model>DDOnly</security-dd-model>
     <staging-mode>nostage</staging-mode>
+    <plan-staging-mode xsi:nil="true"></plan-staging-mode>
+    <cache-in-app-directory>false</cache-in-app-directory>
+  </app-deployment>
+  <app-deployment>
+    <name>weblogic-remote-console-app</name>
+    <target>wladmin</target>
+    <module-type>war</module-type>
+    <source-path>/apps/oracle/wlserver/server/lib/wls-remote-console.war</source-path>
+    <security-dd-model>DDOnly</security-dd-model>
+    <staging-mode xsi:nil="true"></staging-mode>
     <plan-staging-mode xsi:nil="true"></plan-staging-mode>
     <cache-in-app-directory>false</cache-in-app-directory>
   </app-deployment>
