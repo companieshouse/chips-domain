@@ -64,10 +64,10 @@ ENV DOMAIN_HOME=${ORACLE_HOME}/${DOMAIN_NAME} \
     ADMIN_NAME=wladmin
 
 # Copy over domain directory from builder stage
-COPY --from=builder ${DOMAIN_HOME} ${DOMAIN_HOME}/
+COPY --from=builder --chown=weblogic:weblogic ${DOMAIN_HOME} ${DOMAIN_HOME}/
 
 # Copy over container scripts from builder stage
-COPY --from=builder ${ORACLE_HOME}/container-scripts ${ORACLE_HOME}/container-scripts/
+COPY --from=builder --chown=weblogic:weblogic ${ORACLE_HOME}/container-scripts ${ORACLE_HOME}/container-scripts/
 
 # Install fop fonts into JRE and OS
 # OS font location is used by PDFBox and JRE location by FOP
