@@ -26,12 +26,7 @@ RUN ${ORACLE_HOME}/oracle_common/common/bin/wlst.sh -skipWLSModuleScanning conta
 COPY --chown=weblogic:weblogic config ${DOMAIN_HOME}/config/
 
 # Set the credentials in the custom config.xml
-RUN ${ORACLE_HOME}/oracle_common/common/bin/wlst.sh -skipWLSModuleScanning container-scripts/set-credentials.py && \
-    chmod 754 container-scripts/*.sh
-
-# Modify the umask setting in the WebLogic start scripts
-RUN sed -i 's/umask 027/umask 022/' ${DOMAIN_HOME}/bin/startWebLogic.sh && \
-    sed -i 's/umask 027/umask 022/' ${ORACLE_HOME}/wlserver/server/bin/startNodeManager.sh
+RUN ${ORACLE_HOME}/oracle_common/common/bin/wlst.sh -skipWLSModuleScanning container-scripts/set-credentials.py
 
 # Copy across chipsconfig directory
 COPY --chown=weblogic:weblogic chipsconfig ${DOMAIN_HOME}/chipsconfig/
@@ -76,10 +71,6 @@ RUN cd ${JAVA_HOME}/lib && \
     tar -xvf ${DOMAIN_HOME}/chips-fop-fonts.tar && rm ${DOMAIN_HOME}/chips-fop-fonts.tar && \
     ln -s ${JAVA_HOME}/lib/fonts /usr/share/fonts 
 
-# Copy across csi web app and correct permissions of upload folder
-COPY --chown=weblogic:weblogic csi ${DOMAIN_HOME}/upload/csi/
-RUN chown weblogic:weblogic ${DOMAIN_HOME}/upload
-
 # Install gettext to provide envsubst and freetype for FOP
 RUN yum -y install gettext && \
     yum -y install freetype && \
@@ -88,6 +79,13 @@ RUN yum -y install gettext && \
     rm -rf /var/cache/yum
 
 USER weblogic
+
+# Create upload directory and set execute permissions on container scripts
+RUN mkdir ${DOMAIN_HOME}/upload && \
+    chmod 500 container-scripts/*.sh
+
+# Copy across csi web app
+COPY --chown=weblogic:weblogic csi ${DOMAIN_HOME}/upload/csi/
 
 # Copy across swadmin web app and extract
 COPY --chown=weblogic:weblogic swadmin-*.zip ${DOMAIN_HOME}/upload
@@ -110,5 +108,9 @@ COPY --chown=weblogic:weblogic appdynamics/* /opt/appdynamics/AppServerAgent/
 RUN if [ -f /opt/appdynamics/AppServerAgent/startAppDynamics.sh ]; then \
       chmod 754 /opt/appdynamics/AppServerAgent/startAppDynamics.sh; \       
     fi
+
+# Modify the umask setting in the WebLogic start scripts
+RUN sed -i 's/umask 027/umask 022/' ${DOMAIN_HOME}/bin/startWebLogic.sh && \
+    sed -i 's/umask 027/umask 022/' ${ORACLE_HOME}/wlserver/server/bin/startNodeManager.sh
 
 CMD ["bash"]
