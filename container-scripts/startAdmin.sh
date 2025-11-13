@@ -39,6 +39,11 @@ sed -i "s/@sso-published-site-url@/${SSO_PUBLISHED_SITE_URL}/g" config.xml
 sed -i "s/@sso-entity-id@/${SSO_ENTITY_ID}/g" config.xml
 sed -i "s/@sso-chips-default-url@/${SSO_CHIPS_DEFAULT_URL}/g" config.xml
 
+# Generate the SAML2 LDIF file from a template and environment variables if not already present
+if [ ! -f ${DOMAIN_HOME}/security/SAML2IdentityAsserterInit.ldift ]; then
+  envsubst < ${ORACLE_HOME}/container-scripts/SAML2IdentityAsserterInit.ldift.template > ${DOMAIN_HOME}/security/SAML2IdentityAsserterInit.ldift
+fi
+
 # Update the domain credentials to those provided by env var
 ${ORACLE_HOME}/oracle_common/common/bin/wlst.sh -skipWLSModuleScanning ${ORACLE_HOME}/container-scripts/set-credentials.py
 
