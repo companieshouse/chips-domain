@@ -1,0 +1,42 @@
+dn: beaSAML2EndpointBindingLocation=https://login.microsoftonline.com/${TENANT_ID}/saml2+beaSAML2EndpointBindingType=HTTP/Redirect+beaSAML2EndpointServiceType=WEBSSOSERVICE+beaSAML2PartnerName=WebSSO-IdP-Partner-0, ou=Endpoint, ou=@realm@, dc=@domain@
+beaSAML2EndpointBindingType: HTTP/Redirect
+beaSAML2EndpointServiceType: WEBSSOSERVICE
+beaSAML2EndpointIndex: 0
+objectClass: top
+objectClass: beaSAML2Endpoint
+beaSAML2EndpointBindingLocation: https://login.microsoftonline.com/${TENANT_ID}/saml2
+beaSAML2EndpointDefaultSet: false
+beaSAML2EndpointDefault: false
+beaSAML2PartnerName: WebSSO-IdP-Partner-0
+
+dn: beaSAML2EndpointBindingLocation=https://login.microsoftonline.com/${TENANT_ID}/saml2+beaSAML2EndpointBindingType=HTTP/POST+beaSAML2EndpointServiceType=WEBSSOSERVICE+beaSAML2PartnerName=WebSSO-IdP-Partner-0, ou=Endpoint, ou=@realm@, dc=@domain@
+beaSAML2EndpointBindingType: HTTP/POST
+beaSAML2EndpointServiceType: WEBSSOSERVICE
+beaSAML2EndpointIndex: 0
+objectClass: top
+objectClass: beaSAML2Endpoint
+beaSAML2EndpointBindingLocation: https://login.microsoftonline.com/${TENANT_ID}/saml2
+beaSAML2EndpointDefaultSet: false
+beaSAML2EndpointDefault: false
+beaSAML2PartnerName: WebSSO-IdP-Partner-0
+
+dn: beaSAML2PartnerName=WebSSO-IdP-Partner-0, ou=IdPPartner, ou=@realm@, dc=@domain@
+beaSAML2PartnerRedirectURIs: /chips/cff/ssologin
+beaSAML2PartnerWantAuthnRequestsSigned: false
+beaSAML2PartnerVirtualUserEnabled: true
+objectClass: top
+objectClass: beaSAML2IdPPartner
+objectClass: beaSAML2Partner
+beaSAML2PartnerWantArtifactRequestSigned: false
+beaSAML2PartnerServices: beaSAML2EndpointBindingLocation=https://login.microsoftonline.com/${TENANT_ID}/saml2+beaSAML2EndpointBindingType=HTTP/Redirect+beaSAML2EndpointServiceType=WEBSSOSERVICE+beaSAML2PartnerName=WebSSO-IdP-Partner-0, ou=Endpoint, ou=@realm@, dc=@domain@
+beaSAML2PartnerServices: beaSAML2EndpointBindingLocation=https://login.microsoftonline.com/${TENANT_ID}/saml2+beaSAML2EndpointBindingType=HTTP/POST+beaSAML2EndpointServiceType=WEBSSOSERVICE+beaSAML2PartnerName=WebSSO-IdP-Partner-0, ou=Endpoint, ou=@realm@, dc=@domain@
+beaSAML2PartnerEntityId: https://sts.windows.net/${TENANT_ID}/
+beaSAML2PartnerType: WEBSSOIDPPARTNER
+beaSAML2PartnerIssuerURI: https://sts.windows.net/${TENANT_ID}/
+beaSAML2PartnerArtifactBindingUsePOST: false
+beaSAML2PartnerEnabled: true
+beaSAML2PartnerProcessAttributes: true
+beaSAML2PartnerClientPasswordSet: false
+beaSAML2PartnerWantAssertionSigned: false
+beaSAML2PartnerName: WebSSO-IdP-Partner-0
+beaSAML2PartnerSigningCert:: ${SSO_PARTNER_SIGNING_CERT}
