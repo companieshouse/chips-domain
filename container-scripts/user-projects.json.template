@@ -1,0 +1,14 @@
+{
+  "name" : "Hosted WebLogic Remote Console",
+  "label" : "Hosted WebLogic Remote Console",
+  "dataProviders" : [ {
+    "name" : "${APP_INSTANCE_NAME}",
+    "type" : "adminserver",
+    "url" : "http://wladmin:7001",
+    "username" : "${WEBLOGIC_ADMIN_USERNAME}",
+    "settings" : {
+      "proxyOverride" : ""
+    }
+  } ],
+  "current" : true
+}
