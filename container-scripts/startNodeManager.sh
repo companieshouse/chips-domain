@@ -15,11 +15,13 @@ export USER_MEM_ARGS=${MEM_ARGS}
 sed -i 's/ListenAddress=localhost/ListenAddress='${HOSTNAME}'/g' ${DOMAIN_HOME}/nodemanager/nodemanager.properties
 
 # Add the properties for the custom identity keystore to the nodemanager.properties
-echo "KeyStores=CustomIdentityAndJavaStandardTrust" >> ${DOMAIN_HOME}/nodemanager/nodemanager.properties
-echo "CustomIdentityKeyStoreFileName=${DOMAIN_HOME}/security/ch-weblogic-identity.p12" >> ${DOMAIN_HOME}/nodemanager/nodemanager.properties
-echo "CustomIdentityAlias=ch-weblogic-identity" >> ${DOMAIN_HOME}/nodemanager/nodemanager.properties
-echo "CustomIdentityPrivateKeyPassPhrase=${CH_WEBLOGIC_IDENTITY_PASSWORD}" >> ${DOMAIN_HOME}/nodemanager/nodemanager.properties
-echo "CustomIdentityKeyStorePassPhrase=${CH_WEBLOGIC_IDENTITY_PASSWORD}" >> ${DOMAIN_HOME}/nodemanager/nodemanager.properties
+(
+  echo "KeyStores=CustomIdentityAndJavaStandardTrust"
+  echo "CustomIdentityKeyStoreFileName=${DOMAIN_HOME}/security/ch-weblogic-identity.p12"
+  echo "CustomIdentityAlias=ch-weblogic-identity"
+  echo "CustomIdentityPrivateKeyPassPhrase=${CH_WEBLOGIC_IDENTITY_PASSWORD}"
+  echo "CustomIdentityKeyStorePassPhrase=${CH_WEBLOGIC_IDENTITY_PASSWORD}"
+) >> ${DOMAIN_HOME}/nodemanager/nodemanager.properties
 
 # Set the credentials for nodemanager
 echo "username=weblogic" > ${DOMAIN_HOME}/config/nodemanager/nm_password.properties
