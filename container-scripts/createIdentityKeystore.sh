@@ -8,5 +8,3 @@
 
 KEYSTORE_PATH="/apps/oracle/${DOMAIN_NAME}/security/ch-weblogic-identity.p12"
 echo -n ${CH_WEBLOGIC_IDENTITY} | base64 -d > ${KEYSTORE_PATH}
-
-
