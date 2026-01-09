@@ -22,6 +22,9 @@ echo "password=${ADMIN_PASSWORD}" >> ${DOMAIN_HOME}/servers/${ADMIN_NAME}/securi
 # Delete any existing realm data and add any users defined in env vars
 ${ORACLE_HOME}/container-scripts/createUsers.sh
 
+# Add a custom identity keystore
+${ORACLE_HOME}/container-scripts/createIdentityKeystore.sh
+
 # Generate and set the tuxedo configuration from the environment
 cd ${DOMAIN_HOME}/config
 ${ORACLE_HOME}/container-scripts/generateTuxedoConfigFromEnv.sh > tuxedo-config.xml
