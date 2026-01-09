@@ -47,8 +47,9 @@ if [ ! -f ${DOMAIN_HOME}/security/SAML2IdentityAsserterInit.ldift ]; then
   envsubst < ${ORACLE_HOME}/container-scripts/SAML2IdentityAsserterInit.ldift.template > ${DOMAIN_HOME}/security/SAML2IdentityAsserterInit.ldift
 fi
 
-# Update the domain credentials to those provided by env var
+# Update the domain credentials to those provided by env vars
 ${ORACLE_HOME}/oracle_common/common/bin/wlst.sh -skipWLSModuleScanning ${ORACLE_HOME}/container-scripts/set-credentials.py
+${ORACLE_HOME}/oracle_common/common/bin/wlst.sh -skipWLSModuleScanning ${ORACLE_HOME}/container-scripts/set-identity-credentials.py
 
 # Set the jdbc connection strings and credentials
 ${ORACLE_HOME}/oracle_common/common/bin/wlst.sh -skipWLSModuleScanning ${ORACLE_HOME}/container-scripts/set-jdbc-details.py

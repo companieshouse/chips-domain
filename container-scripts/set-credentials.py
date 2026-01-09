@@ -1,4 +1,4 @@
-
+# Set the domain credentials
 domain_name  = os.environ.get("DOMAIN_NAME", "wldomain")
 admin_name  = os.environ.get("ADMIN_NAME", "wladmin")
 admin_pass   = os.environ.get("ADMIN_PASSWORD")
@@ -11,7 +11,6 @@ ad_principal  = os.environ.get("AD_PRINCIPAL", "ad_principal")
 ad_credential  = os.environ.get("AD_CREDENTIAL", "ad_credential")
 ad_user_base_dn  = os.environ.get("AD_USER_BASE_DN", "ad_user_base_dn")
 ad_group_base_dn  = os.environ.get("AD_GROUP_BASE_DN", "ad_group_base_dn")
-ch_weblogic_identity_password  = os.environ.get("CH_WEBLOGIC_IDENTITY_PASSWORD", "password")
 
 print('domain_name : [%s]' % domain_name);
 print('admin_name : [%s]' % admin_name);
@@ -41,23 +40,6 @@ set('CredentialEncrypted', encrypt(ad_credential, domain_path))
 # Set the Embedded LDAP server credential
 cd('/EmbeddedLDAP/'  + domain_name)
 set('CredentialEncrypted', encrypt(ldap_credential, domain_path))
-
-# Write the domain so that SSL MBean is available
-updateDomain()
-
-# Configure Custom Identity Keystore and SSL credentials
-def setIdentityAndSSLCredentials(server, password):
-    cd('/Server/' + server)
-    set('CustomIdentityKeyStorePassPhraseEncrypted', password)
-    cd('SSL/' + server)
-    set('ServerPrivateKeyPassPhraseEncrypted', password)
-    
-encrypted_password = encrypt(ch_weblogic_identity_password, domain_path)
-setIdentityAndSSLCredentials(admin_name, encrypted_password)
-setIdentityAndSSLCredentials('wlserver1', encrypted_password)
-setIdentityAndSSLCredentials('wlserver2', encrypted_password)
-setIdentityAndSSLCredentials('wlserver3', encrypted_password)
-setIdentityAndSSLCredentials('wlserver4', encrypted_password)
 
 # Write and close domain after final changes
 updateDomain()
