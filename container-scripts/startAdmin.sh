@@ -1,9 +1,8 @@
 #!/bin/bash -x
 
-if [ -z ${ADMIN_PASSWORD+x} ]; then
-  echo "Env var ADMIN_PASSWORD must be set! Exiting.."
-  exit 1
-fi
+# Check that required environment variables are set
+: ${ADMIN_PASSWORD:?Env var ADMIN_PASSWORD must be set! Exiting..}
+: ${CH_WEBLOGIC_IDENTITY_PASSWORD:?Env var CH_WEBLOGIC_IDENTITY_PASSWORD must be set! Exiting..}
 
 # This is the admin server so we will use different memory args
 export USER_MEM_ARGS=${ADMIN_MEM_ARGS}
@@ -21,6 +20,9 @@ echo "password=${ADMIN_PASSWORD}" >> ${DOMAIN_HOME}/servers/${ADMIN_NAME}/securi
 
 # Delete any existing realm data and add any users defined in env vars
 ${ORACLE_HOME}/container-scripts/createUsers.sh
+
+# Add a custom identity keystore
+${ORACLE_HOME}/container-scripts/createIdentityKeystore.sh
 
 # Generate and set the tuxedo configuration from the environment
 cd ${DOMAIN_HOME}/config
@@ -44,8 +46,9 @@ if [ ! -f ${DOMAIN_HOME}/security/SAML2IdentityAsserterInit.ldift ]; then
   envsubst < ${ORACLE_HOME}/container-scripts/SAML2IdentityAsserterInit.ldift.template > ${DOMAIN_HOME}/security/SAML2IdentityAsserterInit.ldift
 fi
 
-# Update the domain credentials to those provided by env var
+# Update the domain credentials to those provided by env vars
 ${ORACLE_HOME}/oracle_common/common/bin/wlst.sh -skipWLSModuleScanning ${ORACLE_HOME}/container-scripts/set-credentials.py
+${ORACLE_HOME}/oracle_common/common/bin/wlst.sh -skipWLSModuleScanning ${ORACLE_HOME}/container-scripts/set-identity-credentials.py
 
 # Set the jdbc connection strings and credentials
 ${ORACLE_HOME}/oracle_common/common/bin/wlst.sh -skipWLSModuleScanning ${ORACLE_HOME}/container-scripts/set-jdbc-details.py

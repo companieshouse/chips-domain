@@ -20,21 +20,21 @@ print('db_client_machine_override : [%s]' % db_client_machine_override);
 readDomain(domain_path)
 
 cd('/JDBCSystemResource/chipsDS/JdbcResource/chipsDS/JDBCDriverParams/NO_NAME_0')
-set('PasswordEncrypted', db_password_chipsDS)
+set('PasswordEncrypted', encrypt(db_password_chipsDS, domain_path))
 cmo.setUrl(db_url_chipsDS)
 
 cd('/JDBCSystemResource/chipsDS/JdbcResource/chipsDS/JDBCDriverParams/NO_NAME_0/Properties/NO_NAME_0/Property/user')
 cmo.setValue(db_user_chipsDS)
 
 cd('/JDBCSystemResource/chipsBulkDS/JdbcResource/chipsBulkDS/JDBCDriverParams/NO_NAME_0')
-set('PasswordEncrypted', db_password_chipsDS)
+set('PasswordEncrypted', encrypt(db_password_chipsDS, domain_path))
 cmo.setUrl(db_url_chipsDS)
 
 cd('/JDBCSystemResource/chipsBulkDS/JdbcResource/chipsBulkDS/JDBCDriverParams/NO_NAME_0/Properties/NO_NAME_0/Property/user')
 cmo.setValue(db_user_chipsDS)
 
 cd('/JDBCSystemResource/staffwareDs/JdbcResource/staffwareDs/JDBCDriverParams/NO_NAME_0')
-set('PasswordEncrypted', db_password_staffDS)
+set('PasswordEncrypted', encrypt(db_password_staffDS, domain_path))
 cmo.setUrl(db_url_staffDS)
 
 cd('/JDBCSystemResource/staffwareDs/JdbcResource/staffwareDs/JDBCDriverParams/NO_NAME_0/Properties/NO_NAME_0/Property/user')

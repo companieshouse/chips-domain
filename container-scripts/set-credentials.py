@@ -1,4 +1,4 @@
-
+# Set the domain credentials
 domain_name  = os.environ.get("DOMAIN_NAME", "wldomain")
 admin_name  = os.environ.get("ADMIN_NAME", "wladmin")
 admin_pass   = os.environ.get("ADMIN_PASSWORD")
@@ -41,11 +41,9 @@ set('CredentialEncrypted', encrypt(ad_credential, domain_path))
 cd('/EmbeddedLDAP/'  + domain_name)
 set('CredentialEncrypted', encrypt(ldap_credential, domain_path))
 
-# Write Domain
-# ============
+# Write and close domain after final changes
 updateDomain()
 closeDomain()
 
 # Exit WLST
-# =========
 exit()
