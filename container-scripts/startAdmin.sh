@@ -2,7 +2,6 @@
 
 # Check that required environment variables are set
 : ${ADMIN_PASSWORD:?Env var ADMIN_PASSWORD must be set! Exiting..}
-: ${CH_WEBLOGIC_IDENTITY:?Env var CH_WEBLOGIC_IDENTITY must be set! Exiting..}
 : ${CH_WEBLOGIC_IDENTITY_PASSWORD:?Env var CH_WEBLOGIC_IDENTITY_PASSWORD must be set! Exiting..}
 
 # This is the admin server so we will use different memory args
