@@ -12,11 +12,11 @@ print('domain_path : [%s]' % domain_path);
 readDomain(domain_path)
 
 # Configure Custom Identity Keystore and SSL credentials
-def setIdentityAndSSLCredentials(server, password):
+def setIdentityAndSSLCredentials(server, encrypted_password):
     cd('/Server/' + server)
-    set('CustomIdentityKeyStorePassPhraseEncrypted', password)
+    set('CustomIdentityKeyStorePassPhraseEncrypted', encrypted_password)
     cd('SSL/' + server)
-    set('ServerPrivateKeyPassPhraseEncrypted', password)
+    set('ServerPrivateKeyPassPhraseEncrypted', encrypted_password)
     
 encrypted_password = encrypt(ch_weblogic_identity_password, domain_path)
 setIdentityAndSSLCredentials(admin_name, encrypted_password)
