@@ -104,6 +104,7 @@
     <ssl>
       <hostname-verifier xsi:nil="true"></hostname-verifier>
       <hostname-verification-ignored>true</hostname-verification-ignored>
+      <server-private-key-alias>ch-weblogic-identity</server-private-key-alias>
     </ssl>
     <log>
       <rotation-type>byTime</rotation-type>
@@ -125,6 +126,9 @@
       <client-certificate-enforced>false</client-certificate-enforced>
     </network-access-point>
     <weblogic-plugin-enabled>true</weblogic-plugin-enabled>
+    <key-stores>CustomIdentityAndJavaStandardTrust</key-stores>
+    <custom-identity-key-store-file-name>security/ch-weblogic-identity.p12</custom-identity-key-store-file-name>
+    <custom-identity-key-store-type>PKCS12</custom-identity-key-store-type>
   </server>
   <server>
     <name>wlserver1</name>
@@ -133,6 +137,7 @@
     <ssl>
       <hostname-verifier xsi:nil="true"></hostname-verifier>
       <hostname-verification-ignored>true</hostname-verification-ignored>
+      <server-private-key-alias>ch-weblogic-identity</server-private-key-alias>
     </ssl>
     <log>
       <rotation-type>byTime</rotation-type>
@@ -171,6 +176,9 @@
       <cluster>wlcluster</cluster>
     </jta-migratable-target>
     <weblogic-plugin-enabled>true</weblogic-plugin-enabled>
+    <key-stores>CustomIdentityAndJavaStandardTrust</key-stores>
+    <custom-identity-key-store-file-name>security/ch-weblogic-identity.p12</custom-identity-key-store-file-name>
+    <custom-identity-key-store-type>PKCS12</custom-identity-key-store-type>
     <single-sign-on-services>
       <published-site-url>@sso-published-site-url@</published-site-url>
       <entity-id>@sso-entity-id@</entity-id>
@@ -210,6 +218,7 @@
     <ssl>
       <hostname-verifier xsi:nil="true"></hostname-verifier>
       <hostname-verification-ignored>true</hostname-verification-ignored>
+      <server-private-key-alias>ch-weblogic-identity</server-private-key-alias>
     </ssl>
     <log>
       <rotation-type>byTime</rotation-type>
@@ -248,6 +257,9 @@
       <cluster>wlcluster</cluster>
     </jta-migratable-target>
     <weblogic-plugin-enabled>true</weblogic-plugin-enabled>
+    <key-stores>CustomIdentityAndJavaStandardTrust</key-stores>
+    <custom-identity-key-store-file-name>security/ch-weblogic-identity.p12</custom-identity-key-store-file-name>
+    <custom-identity-key-store-type>PKCS12</custom-identity-key-store-type>
     <single-sign-on-services>
       <published-site-url>@sso-published-site-url@</published-site-url>
       <entity-id>@sso-entity-id@</entity-id>
@@ -287,6 +299,7 @@
     <ssl>
       <hostname-verifier xsi:nil="true"></hostname-verifier>
       <hostname-verification-ignored>true</hostname-verification-ignored>
+      <server-private-key-alias>ch-weblogic-identity</server-private-key-alias>
     </ssl>
     <log>
       <rotation-type>byTime</rotation-type>
@@ -325,6 +338,9 @@
       <cluster>wlcluster</cluster>
     </jta-migratable-target>
     <weblogic-plugin-enabled>true</weblogic-plugin-enabled>
+    <key-stores>CustomIdentityAndJavaStandardTrust</key-stores>
+    <custom-identity-key-store-file-name>security/ch-weblogic-identity.p12</custom-identity-key-store-file-name>
+    <custom-identity-key-store-type>PKCS12</custom-identity-key-store-type>
     <single-sign-on-services>
       <published-site-url>@sso-published-site-url@</published-site-url>
       <entity-id>@sso-entity-id@</entity-id>
@@ -364,6 +380,7 @@
     <ssl>
       <hostname-verifier xsi:nil="true"></hostname-verifier>
       <hostname-verification-ignored>true</hostname-verification-ignored>
+      <server-private-key-alias>ch-weblogic-identity</server-private-key-alias>
     </ssl>
     <log>
       <rotation-type>byTime</rotation-type>
@@ -402,6 +419,9 @@
       <cluster>wlcluster</cluster>
     </jta-migratable-target>
     <weblogic-plugin-enabled>true</weblogic-plugin-enabled>
+    <key-stores>CustomIdentityAndJavaStandardTrust</key-stores>
+    <custom-identity-key-store-file-name>security/ch-weblogic-identity.p12</custom-identity-key-store-file-name>
+    <custom-identity-key-store-type>PKCS12</custom-identity-key-store-type>
     <single-sign-on-services>
       <published-site-url>@sso-published-site-url@</published-site-url>
       <entity-id>@sso-entity-id@</entity-id>
