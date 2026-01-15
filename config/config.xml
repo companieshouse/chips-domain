@@ -199,6 +199,9 @@
       <metadata-encryption-algorithm>rsa-oaep</metadata-encryption-algorithm>
       <metadata-encryption-algorithm>rsa-oaep-mgf1p</metadata-encryption-algorithm>
     </single-sign-on-services>
+    <data-source>
+      <rmi-jdbc-security>Compatibility</rmi-jdbc-security>
+    </data-source>
   </server>
   <server>
     <name>wlserver2</name>
@@ -273,6 +276,9 @@
       <metadata-encryption-algorithm>rsa-oaep</metadata-encryption-algorithm>
       <metadata-encryption-algorithm>rsa-oaep-mgf1p</metadata-encryption-algorithm>
     </single-sign-on-services>
+    <data-source>
+      <rmi-jdbc-security>Compatibility</rmi-jdbc-security>
+    </data-source>
   </server>
   <server>
     <name>wlserver3</name>
@@ -347,6 +353,9 @@
       <metadata-encryption-algorithm>rsa-oaep</metadata-encryption-algorithm>
       <metadata-encryption-algorithm>rsa-oaep-mgf1p</metadata-encryption-algorithm>
     </single-sign-on-services>
+    <data-source>
+      <rmi-jdbc-security>Compatibility</rmi-jdbc-security>
+    </data-source>
   </server>
   <server>
     <name>wlserver4</name>
@@ -421,6 +430,9 @@
       <metadata-encryption-algorithm>rsa-oaep</metadata-encryption-algorithm>
       <metadata-encryption-algorithm>rsa-oaep-mgf1p</metadata-encryption-algorithm>
     </single-sign-on-services>
+    <data-source>
+      <rmi-jdbc-security>Compatibility</rmi-jdbc-security>
+    </data-source>
   </server>
   <cluster>
     <name>wlcluster</name>
