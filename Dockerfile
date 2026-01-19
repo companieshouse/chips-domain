@@ -1,4 +1,4 @@
-FROM 300288021642.dkr.ecr.eu-west-2.amazonaws.com/ch-weblogic:2.0.2 AS builder
+FROM 300288021642.dkr.ecr.eu-west-2.amazonaws.com/ch-weblogic:2.0.3 AS builder
 
 # IMPORTANT - the default admin password should be supplied as a build arg
 # e.g. --build-arg ADMIN_PASSWORD=notsecure123.  This password MUST later be reset
@@ -53,7 +53,7 @@ COPY *-fonts.tar ${DOMAIN_HOME}/
 RUN cd ${DOMAIN_HOME} && \
     tar -xvf chips-ixbrl-fonts.tar && rm chips-ixbrl-fonts.tar
 
-FROM 300288021642.dkr.ecr.eu-west-2.amazonaws.com/ch-weblogic:2.0.2
+FROM 300288021642.dkr.ecr.eu-west-2.amazonaws.com/ch-weblogic:2.0.3
 
 ENV DOMAIN_NAME=chipsdomain
 ENV DOMAIN_HOME=${ORACLE_HOME}/${DOMAIN_NAME} \
