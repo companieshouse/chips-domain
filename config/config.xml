@@ -79,6 +79,7 @@
     <credential-encrypted></credential-encrypted>
     <node-manager-username></node-manager-username>
     <node-manager-password-encrypted></node-manager-password-encrypted>
+    <remote-anonymous-rmit3-enabled>@remote-anon-rmit3-enabled@</remote-anonymous-rmit3-enabled>
   </security-configuration>
   <jta>
     <timeout-seconds>600</timeout-seconds>
