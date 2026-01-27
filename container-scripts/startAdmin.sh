@@ -36,6 +36,9 @@ sed -i "s/@start-args@/${START_ARGS}/g" config.xml
 sed -i "s/@t3-host-fqdn@/${T3_HOST_FQDN}/g" config.xml
 sed -i "s/@t3-host-port-prefix@/${T3_HOST_PORT_PREFIX}/g" config.xml
 
+# Set the remote anonymous RMI T3 channel enabled flag, with default of false
+sed -i "s/@remote-anon-rmit3-enabled@/${REMOTE_ANON_RMIT3_ENABLED:-false}/g" config.xml
+
 # Set the Single Sign On configuration
 sed -i "s/@sso-published-site-url@/${SSO_PUBLISHED_SITE_URL}/g" config.xml
 sed -i "s/@sso-entity-id@/${SSO_ENTITY_ID}/g" config.xml
