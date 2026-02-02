@@ -211,6 +211,7 @@
     <data-source>
       <rmi-jdbc-security>Compatibility</rmi-jdbc-security>
     </data-source>
+    <transaction-primary-channel-name>t3s-channel</transaction-primary-channel-name>
   </server>
   <server>
     <name>wlserver2</name>
@@ -292,6 +293,7 @@
     <data-source>
       <rmi-jdbc-security>Compatibility</rmi-jdbc-security>
     </data-source>
+    <transaction-primary-channel-name>t3s-channel</transaction-primary-channel-name>
   </server>
   <server>
     <name>wlserver3</name>
@@ -373,6 +375,7 @@
     <data-source>
       <rmi-jdbc-security>Compatibility</rmi-jdbc-security>
     </data-source>
+    <transaction-primary-channel-name>t3s-channel</transaction-primary-channel-name>
   </server>
   <server>
     <name>wlserver4</name>
@@ -454,6 +457,7 @@
     <data-source>
       <rmi-jdbc-security>Compatibility</rmi-jdbc-security>
     </data-source>
+    <transaction-primary-channel-name>t3s-channel</transaction-primary-channel-name>
   </server>
   <cluster>
     <name>wlcluster</name>
