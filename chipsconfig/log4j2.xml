@@ -14,6 +14,90 @@
       <AppenderRef ref="ConsoleAppender" />
     </Root>
 
+    <Logger name="performanceLogger" additivity="false" level ="INFO">
+      <AppenderRef ref="ConsoleAppender" />
+    </Logger>
+
+    <Logger name="uk.gov.ch.chips.common.util.AopTimer" additivity="false" level ="INFO">
+      <AppenderRef ref="ConsoleAppender" />
+    </Logger>
+
+   <Logger name="uk.gov.ch.chips.server.imagesender.BulkImageLoadMDB" additivity="false" level ="INFO">
+     <AppenderRef ref="ConsoleAppender" />
+   </Logger>
+
+   <Logger name="restwebservices.rs.EfilingREST" additivity="false" level ="DEBUG">
+     <AppenderRef ref="ConsoleAppender" />
+   </Logger>
+
+   <Logger name="uk.gov.ch.cap.server.image.ElectronicFOPImage" additivity="false" level ="DEBUG">
+     <AppenderRef ref="ConsoleAppender" />
+   </Logger>
+
+   <Logger name="uk.gov.ch.chips.server.letterproducer" additivity="false" level ="DEBUG">
+     <AppenderRef ref="ConsoleAppender" />
+   </Logger>
+
+   <Logger name="electronic-filing" additivity="false" level ="INFO">
+     <AppenderRef ref="ConsoleAppender" />
+   </Logger>
+
+   <Logger name="TuxLogger" additivity="false" level ="INFO">
+     <AppenderRef ref="ConsoleAppender" />
+   </Logger>
+
+   <Logger name="cedarMessageService" additivity="false" level ="DEBUG">
+     <AppenderRef ref="ConsoleAppender" />
+   </Logger>
+
+   <Logger name="cedarMessageAuditService" additivity="false" level ="DEBUG">
+     <AppenderRef ref="ConsoleAppender" />
+   </Logger>
+
+   <Logger name="uk.gov.ch.chips.server.queryhandling.PolicyEngineServiceImpl" additivity="false" level ="DEBUG">
+     <AppenderRef ref="ConsoleAppender" />
+   </Logger>
+
+   <Logger name="uk.gov.ch.chips.server.director.bulk.OfficerBulkServiceImpl" additivity="false" level ="DEBUG">
+     <AppenderRef ref="ConsoleAppender" />
+   </Logger>
+
+   <Logger name="uk.gov.ch.chips.server.director.bulk.OfficerBulkMDB" additivity="false" level ="DEBUG">
+     <AppenderRef ref="ConsoleAppender" />
+   </Logger>
+
+   <Logger name="uk.gov.ch.chips.server.director.bulk.OfficerEventMDB" additivity="false" level ="DEBUG">
+     <AppenderRef ref="ConsoleAppender" />
+   </Logger>
+
+   <Logger name="uk.gov.ch.chips.server.director.bulk.OfficerEventServiceImpl" additivity="false" level ="DEBUG">
+     <AppenderRef ref="ConsoleAppender" />
+   </Logger>
+
+   <Logger name="uk.gov.ch.chips.server.tuxedo" additivity="false" level ="DEBUG">
+     <AppenderRef ref="ConsoleAppender" />
+   </Logger>
+
+   <Logger name="uk.gov.ch.imagesender.client.ImageToS3StoreSender" additivity="false" level ="INFO">
+     <AppenderRef ref="ConsoleAppender" />
+   </Logger>
+
+   <Logger name="uk.gov.ch.imagesender.dao.impl.TemporaryImageStoreFileSystemDaoImpl" additivity="false" level ="DEBUG">
+     <AppenderRef ref="ConsoleAppender" />
+   </Logger>
+
+   <Logger name="uk.gov.ch.cap.server.image.RemoteElectronicFOPImage" additivity="false" level ="INFO">
+     <AppenderRef ref="ConsoleAppender" />
+   </Logger>
+
+   <Logger name="uk.gov.ch.chips.server.workflow.ProcessWorkObjectRetry" additivity="false" level ="INFO">
+     <AppenderRef ref="ConsoleAppender" />
+   </Logger>
+
+   <Logger name="org.hibernate.orm.deprecation" additivity="false" level ="ERROR">
+     <AppenderRef ref="ConsoleAppender" />
+   </Logger>
+
     <!-- example logging configuration
     <Logger name="uk.gov.companieshouse.chipsrestinterfaces.rs.ChipsGenericREST" additivity="false" level="DEBUG">
       <AppenderRef ref="ConsoleAppender" />
