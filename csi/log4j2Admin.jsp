@@ -10,21 +10,13 @@
     <title>Log4J2 Administration utility</title>
   </head>
   <body>
-    <% 
-      
-      String[] logLevels = { "debug", "info", "warn", "error", "fatal", "off" };      
-
+    <%
       String targetOperation   = (String)request.getParameter("operation");
       String targetLogger      = (String)request.getParameter("logger");
       String targetLogLevel    = (String)request.getParameter("newLogLevel");
 
       if("changeLogLevel".equals(targetOperation))
       {
-        if (("ROOT").equalsIgnoreCase(targetLogger)
-        {
-          targetLogger = LogManager.getRootLogger().getName();
-        }
-
         LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
         Configuration log4JConfiguration = ctx.getConfiguration();
         LoggerConfig loggerConfig = log4JConfiguration.getLoggerConfig(targetLogger); 
