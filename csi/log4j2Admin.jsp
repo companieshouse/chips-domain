@@ -17,12 +17,7 @@
 
       if("changeLogLevel".equals(targetOperation))
       {
-        LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
-        Configuration log4JConfiguration = ctx.getConfiguration();
-        LoggerConfig loggerConfig = log4JConfiguration.getLoggerConfig(targetLogger); 
-        loggerConfig.setLevel(Level.toLevel(targetLogLevel));
-        ctx.updateLoggers();
-
+        Configurator.setLevel(targetLogger, Level.toLevel(targetLogLevel));
         System.out.println("Log4j2 log level for logger: " + targetLogger + " changed to " + targetLogLevel);
         %>
         <p>Log4j2 log level for logger: <%= targetLogger %> changed to <%= targetLogLevel %></p>
