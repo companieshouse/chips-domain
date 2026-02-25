@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8"%>
-<%@ page import="org.apache.logging.log4j.LogManager"%>
 <%@ page import="org.apache.logging.log4j.Level"%>
-<%@ page import="org.apache.logging.log4j.core.LoggerContext"%>
-<%@ page import="org.apache.logging.log4j.core.config.Configuration"%>
-<%@ page import="org.apache.logging.log4j.core.config.LoggerConfig"%>
+<%@ page import="org.apache.logging.log4j.core.config.Configurator"%>
 
 <html>
   <head>
