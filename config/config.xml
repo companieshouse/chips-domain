@@ -169,7 +169,7 @@
       <client-certificate-enforced>false</client-certificate-enforced>
     </network-access-point>
     <server-start>
-      <class-path>/apps/oracle/chipsdomain:/apps/oracle/chipsdomain/chipsconfig/xalan.jar:/apps/oracle/chipsdomain/chipsconfig/antlr-2.7.6.jar:/apps/oracle/chipsdomain/chipsconfig/log4j.jar:/apps/oracle/chipsdomain/chipsconfig/aqapi12.jar:/apps/oracle/chipsdomain/chipsconfig/aqbridge.jar:/apps/oracle/chipsdomain/chipsconfig/chips_config.jar:/apps/oracle/chipsdomain/chipsconfig/ssoRMI.jar:/apps/oracle/chipsdomain/chipsconfig/rmi_config.jar:/apps/oracle/chipsdomain/chipsconfig:/apps/oracle/chipsdomain/chipsconfig/xsl:/apps/oracle/chipsdomain/chipsconfig/rtfTemplates:/apps/oracle/chipsdomain/chipsconfig/core-renderer.jar:/apps/oracle/chipsdomain/chipsconfig/itext-2.0.8.jar</class-path>
+      <class-path>/apps/oracle/chipsdomain:/apps/oracle/chipsdomain/chipsconfig/xalan.jar:/apps/oracle/chipsdomain/chipsconfig/antlr-2.7.6.jar:/apps/oracle/chipsdomain/chipsconfig/log4j-core.jar:/apps/oracle/chipsdomain/chipsconfig/log4j-api.jar:/apps/oracle/chipsdomain/chipsconfig/log4j-jcl.jar:/apps/oracle/chipsdomain/chipsconfig/log4j-1.2-api.jar:/apps/oracle/chipsdomain/chipsconfig/aqapi12.jar:/apps/oracle/chipsdomain/chipsconfig/aqbridge.jar:/apps/oracle/chipsdomain/chipsconfig/chips_config.jar:/apps/oracle/chipsdomain/chipsconfig/ssoRMI.jar:/apps/oracle/chipsdomain/chipsconfig/rmi_config.jar:/apps/oracle/chipsdomain/chipsconfig:/apps/oracle/chipsdomain/chipsconfig/xsl:/apps/oracle/chipsdomain/chipsconfig/rtfTemplates:/apps/oracle/chipsdomain/chipsconfig/core-renderer.jar:/apps/oracle/chipsdomain/chipsconfig/itext-2.0.8.jar</class-path>
       <arguments>@start-args@</arguments>
     </server-start>
     <jta-migratable-target>
@@ -251,7 +251,7 @@
       <client-certificate-enforced>false</client-certificate-enforced>
     </network-access-point>
     <server-start>
-      <class-path>/apps/oracle/chipsdomain:/apps/oracle/chipsdomain/chipsconfig/xalan.jar:/apps/oracle/chipsdomain/chipsconfig/antlr-2.7.6.jar:/apps/oracle/chipsdomain/chipsconfig/log4j.jar:/apps/oracle/chipsdomain/chipsconfig/aqapi12.jar:/apps/oracle/chipsdomain/chipsconfig/aqbridge.jar:/apps/oracle/chipsdomain/chipsconfig/chips_config.jar:/apps/oracle/chipsdomain/chipsconfig/ssoRMI.jar:/apps/oracle/chipsdomain/chipsconfig/rmi_config.jar:/apps/oracle/chipsdomain/chipsconfig:/apps/oracle/chipsdomain/chipsconfig/xsl:/apps/oracle/chipsdomain/chipsconfig/rtfTemplates:/apps/oracle/chipsdomain/chipsconfig/core-renderer.jar:/apps/oracle/chipsdomain/chipsconfig/itext-2.0.8.jar</class-path>
+      <class-path>/apps/oracle/chipsdomain:/apps/oracle/chipsdomain/chipsconfig/xalan.jar:/apps/oracle/chipsdomain/chipsconfig/antlr-2.7.6.jar:/apps/oracle/chipsdomain/chipsconfig/log4j-core.jar:/apps/oracle/chipsdomain/chipsconfig/log4j-api.jar:/apps/oracle/chipsdomain/chipsconfig/log4j-jcl.jar:/apps/oracle/chipsdomain/chipsconfig/log4j-1.2-api.jar:/apps/oracle/chipsdomain/chipsconfig/aqapi12.jar:/apps/oracle/chipsdomain/chipsconfig/aqbridge.jar:/apps/oracle/chipsdomain/chipsconfig/chips_config.jar:/apps/oracle/chipsdomain/chipsconfig/ssoRMI.jar:/apps/oracle/chipsdomain/chipsconfig/rmi_config.jar:/apps/oracle/chipsdomain/chipsconfig:/apps/oracle/chipsdomain/chipsconfig/xsl:/apps/oracle/chipsdomain/chipsconfig/rtfTemplates:/apps/oracle/chipsdomain/chipsconfig/core-renderer.jar:/apps/oracle/chipsdomain/chipsconfig/itext-2.0.8.jar</class-path>
       <arguments>@start-args@</arguments>
     </server-start>
     <jta-migratable-target>
@@ -333,7 +333,7 @@
       <client-certificate-enforced>false</client-certificate-enforced>
     </network-access-point>
     <server-start>
-      <class-path>/apps/oracle/chipsdomain:/apps/oracle/chipsdomain/chipsconfig/xalan.jar:/apps/oracle/chipsdomain/chipsconfig/antlr-2.7.6.jar:/apps/oracle/chipsdomain/chipsconfig/log4j.jar:/apps/oracle/chipsdomain/chipsconfig/aqapi12.jar:/apps/oracle/chipsdomain/chipsconfig/aqbridge.jar:/apps/oracle/chipsdomain/chipsconfig/chips_config.jar:/apps/oracle/chipsdomain/chipsconfig/ssoRMI.jar:/apps/oracle/chipsdomain/chipsconfig/rmi_config.jar:/apps/oracle/chipsdomain/chipsconfig:/apps/oracle/chipsdomain/chipsconfig/xsl:/apps/oracle/chipsdomain/chipsconfig/rtfTemplates:/apps/oracle/chipsdomain/chipsconfig/core-renderer.jar:/apps/oracle/chipsdomain/chipsconfig/itext-2.0.8.jar</class-path>
+      <class-path>/apps/oracle/chipsdomain:/apps/oracle/chipsdomain/chipsconfig/xalan.jar:/apps/oracle/chipsdomain/chipsconfig/antlr-2.7.6.jar:/apps/oracle/chipsdomain/chipsconfig/log4j-core.jar:/apps/oracle/chipsdomain/chipsconfig/log4j-api.jar:/apps/oracle/chipsdomain/chipsconfig/log4j-jcl.jar:/apps/oracle/chipsdomain/chipsconfig/log4j-1.2-api.jar:/apps/oracle/chipsdomain/chipsconfig/aqapi12.jar:/apps/oracle/chipsdomain/chipsconfig/aqbridge.jar:/apps/oracle/chipsdomain/chipsconfig/chips_config.jar:/apps/oracle/chipsdomain/chipsconfig/ssoRMI.jar:/apps/oracle/chipsdomain/chipsconfig/rmi_config.jar:/apps/oracle/chipsdomain/chipsconfig:/apps/oracle/chipsdomain/chipsconfig/xsl:/apps/oracle/chipsdomain/chipsconfig/rtfTemplates:/apps/oracle/chipsdomain/chipsconfig/core-renderer.jar:/apps/oracle/chipsdomain/chipsconfig/itext-2.0.8.jar</class-path>
       <arguments>@start-args@</arguments>
     </server-start>
     <jta-migratable-target>
@@ -415,7 +415,7 @@
       <client-certificate-enforced>false</client-certificate-enforced>
     </network-access-point>
     <server-start>
-      <class-path>/apps/oracle/chipsdomain:/apps/oracle/chipsdomain/chipsconfig/xalan.jar:/apps/oracle/chipsdomain/chipsconfig/antlr-2.7.6.jar:/apps/oracle/chipsdomain/chipsconfig/log4j.jar:/apps/oracle/chipsdomain/chipsconfig/aqapi12.jar:/apps/oracle/chipsdomain/chipsconfig/aqbridge.jar:/apps/oracle/chipsdomain/chipsconfig/chips_config.jar:/apps/oracle/chipsdomain/chipsconfig/ssoRMI.jar:/apps/oracle/chipsdomain/chipsconfig/rmi_config.jar:/apps/oracle/chipsdomain/chipsconfig:/apps/oracle/chipsdomain/chipsconfig/xsl:/apps/oracle/chipsdomain/chipsconfig/rtfTemplates:/apps/oracle/chipsdomain/chipsconfig/core-renderer.jar:/apps/oracle/chipsdomain/chipsconfig/itext-2.0.8.jar</class-path>
+      <class-path>/apps/oracle/chipsdomain:/apps/oracle/chipsdomain/chipsconfig/xalan.jar:/apps/oracle/chipsdomain/chipsconfig/antlr-2.7.6.jar:/apps/oracle/chipsdomain/chipsconfig/log4j-core.jar:/apps/oracle/chipsdomain/chipsconfig/log4j-api.jar:/apps/oracle/chipsdomain/chipsconfig/log4j-jcl.jar:/apps/oracle/chipsdomain/chipsconfig/log4j-1.2-api.jar:/apps/oracle/chipsdomain/chipsconfig/aqapi12.jar:/apps/oracle/chipsdomain/chipsconfig/aqbridge.jar:/apps/oracle/chipsdomain/chipsconfig/chips_config.jar:/apps/oracle/chipsdomain/chipsconfig/ssoRMI.jar:/apps/oracle/chipsdomain/chipsconfig/rmi_config.jar:/apps/oracle/chipsdomain/chipsconfig:/apps/oracle/chipsdomain/chipsconfig/xsl:/apps/oracle/chipsdomain/chipsconfig/rtfTemplates:/apps/oracle/chipsdomain/chipsconfig/core-renderer.jar:/apps/oracle/chipsdomain/chipsconfig/itext-2.0.8.jar</class-path>
       <arguments>@start-args@</arguments>
     </server-start>
     <jta-migratable-target>
