@@ -31,7 +31,7 @@
   <appender-ref ref="ConsoleAppender"/>
 </logger>
 
-<logger name="uk.gov.ch.chips.server.imagesender.BulkImageLoadMDB" additivity="false">
+<logger name="uk.gov.ch.chips.server.imagesender.BulkImageLoadMessageListener" additivity="false">
   <level value="INFO"/>
   <appender-ref ref="ConsoleAppender"/>
 </logger>
@@ -91,12 +91,12 @@
     <appender-ref ref="ConsoleAppender"/>
   </logger>
 
-  <logger name="uk.gov.ch.chips.server.director.bulk.OfficerBulkMDB" additivity="false">
+  <logger name="uk.gov.ch.chips.officerbulks.jms.OfficerBulkMessageListener" additivity="false">
     <level value="DEBUG"/>
     <appender-ref ref="ConsoleAppender"/>
   </logger>
 
-  <logger name="uk.gov.ch.chips.server.director.bulk.OfficerEventMDB" additivity="false">
+  <logger name="uk.gov.ch.chips.officerbulks.jms.OfficerEventMessageListener" additivity="false">
     <level value="DEBUG"/>
     <appender-ref ref="ConsoleAppender"/>
   </logger>
