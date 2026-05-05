@@ -607,6 +607,9 @@
     <user-preferred-server>wlserver4</user-preferred-server>
     <cluster>wlcluster</cluster>
   </migratable-target>
+  <web-app-container>
+    <auth-cookie-enabled>false</auth-cookie-enabled>
+  </web-app-container>
   <jmx>
     <compatibility-m-bean-server-enabled>true</compatibility-m-bean-server-enabled>
     <management-ejb-enabled>true</management-ejb-enabled>
