@@ -18,26 +18,6 @@
         <sec:active-type>AuthenticatedUser</sec:active-type>
         <sec:active-type>weblogic-jwt-token</sec:active-type>
       </sec:authentication-provider>
-      <sec:authentication-provider xsi:type="wls:active-directory-authenticatorType">
-        <sec:name>AD_LDAP</sec:name>
-        <sec:control-flag>OPTIONAL</sec:control-flag>
-        <wls:host></wls:host>
-        <wls:port></wls:port>
-        <wls:ssl-enabled>true</wls:ssl-enabled>
-        <wls:user-name-attribute>sAMAccountName</wls:user-name-attribute>
-        <wls:principal></wls:principal>
-        <wls:user-base-dn></wls:user-base-dn>
-        <wls:cache-enabled>false</wls:cache-enabled>
-        <wls:user-from-name-filter>(&amp;(sAMAccountName=%u)(objectclass=user))</wls:user-from-name-filter>
-        <wls:group-base-dn></wls:group-base-dn>
-        <wls:group-search-scope>onelevel</wls:group-search-scope>
-        <wls:connect-timeout>5</wls:connect-timeout>
-        <wls:group-from-name-filter>(&amp;(cn=%g)(objectclass=group))</wls:group-from-name-filter>
-        <wls:static-group-object-class>group</wls:static-group-object-class>
-        <wls:static-group-name-attribute>cn</wls:static-group-name-attribute>
-        <wls:static-group-dns-from-member-dn-filter>(&amp;(member=%M)(objectclass=group))</wls:static-group-dns-from-member-dn-filter>
-        <wls:group-membership-searching>off</wls:group-membership-searching>
-      </sec:authentication-provider>
       <sec:authentication-provider xmlns:sam="http://xmlns.oracle.com/weblogic/security/saml2" xsi:type="sam:saml2-identity-asserterType">
         <sec:name>SAML_IA</sec:name>
       </sec:authentication-provider>
