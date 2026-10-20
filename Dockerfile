@@ -1,5 +1,5 @@
 FROM 300288021642.dkr.ecr.eu-west-2.amazonaws.com/ch-weblogic:2.0.6 AS builder
-###migration
+### migration
 # IMPORTANT - the default admin password should be supplied as a build arg
 # e.g. --build-arg ADMIN_PASSWORD=notsecure123.  This password MUST later be reset
 # to a secure value when starting the admin container.
