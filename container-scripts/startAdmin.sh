@@ -59,8 +59,8 @@ ${ORACLE_HOME}/oracle_common/common/bin/wlst.sh -skipWLSModuleScanning ${ORACLE_
 # Prevent Derby from being started
 export DERBY_FLAG=false
 
-# Update the CLASSPATH of the Admin server for the swadmin application [some may not be needed, needs review]
-export CLASSPATH=${DOMAIN_HOME}/chipsconfig/chips-common.jar:${DOMAIN_HOME}/chipsconfig/log4j-core.jar:${DOMAIN_HOME}/chipsconfig/log4j-api.jar:${DOMAIN_HOME}/chipsconfig/log4j-1.2-api.jar:${DOMAIN_HOME}/chipsconfig/jdom.jar:${DOMAIN_HOME}/chipsconfig/ssoRMI.jar:${DOMAIN_HOME}/chipsconfig/aqapi12.jar:${DOMAIN_HOME}/chipsconfig:${CLASSPATH}
+# Update the CLASSPATH of the Admin server for the swadmin application
+export CLASSPATH=${DOMAIN_HOME}/chipsconfig/ssoRMI.jar:${DOMAIN_HOME}/chipsconfig/aqapi12.jar:${DOMAIN_HOME}/chipsconfig:${CLASSPATH}
 
 # Set the startup params of the Admin server
 export JAVA_OPTIONS="${JAVA_OPTIONS} ${ADMIN_START_ARGS}"
