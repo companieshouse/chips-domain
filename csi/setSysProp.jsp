@@ -8,12 +8,12 @@
     List<String> allowedProperties = Arrays.asList(allowedPropertiesString.split(","));
     String propertyName = request.getParameter("propertyname");
     String propertyValue = request.getParameter("propertyvalue");
-    if (propertyName != null && propertyValue != null) {
+    if (propertyName != null && !propertyName.isBlank() && propertyValue != null) {
       if (allowedProperties.contains(propertyName)) {
         System.out.println("Setting " + propertyName + "=" + propertyValue);
         System.setProperty(propertyName, propertyValue);
       } else {
-        System.out.println("WARNING: Attempt to set non-allowed property: " + propertyName);
+        System.out.println("WARNING: setSysProp.jsp - Attempt to set non-allowed property: " + propertyName);
       }
   	} 
 %>
