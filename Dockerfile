@@ -48,6 +48,9 @@ RUN cd ${DOMAIN_NAME}/chipsconfig && \
 # Copy font archives into domain home for later installation
 COPY *-fonts.tar ${DOMAIN_HOME}/
 
+RUN echo "DOMAIN_HOME=${DOMAIN_HOME}" 
+RUN ls -la ${DOMAIN_HOME}
+
 # Install ixbrl fonts
 RUN cd ${DOMAIN_HOME} && \
     tar -xvf chips-ixbrl-fonts.tar && rm chips-ixbrl-fonts.tar
