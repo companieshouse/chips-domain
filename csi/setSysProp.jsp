@@ -1,12 +1,21 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8"%>
-
 <%
-	  String propertyName = request.getParameter("propertyname");
-	  String propertyValue = request.getParameter("propertyvalue");
-	  if (propertyName != null && propertyValue != null) {
-	    System.out.println("Setting " + propertyName + "=" + propertyValue);
-            System.setProperty(propertyName, propertyValue);
-  	  }
+    // Obtain the list of allowed properties that can be modified
+    String allowedPropertiesString = System.getenv("CSI_MODIFIABLE_JAVA_SYSTEM_PROPERTIES");
+    if (allowedPropertiesString == null) {
+      allowedPropertiesString = "";
+    }
+    List<String> allowedProperties = Arrays.asList(allowedPropertiesString.split(","));
+    String propertyName = request.getParameter("propertyname");
+    String propertyValue = request.getParameter("propertyvalue");
+    if (propertyName != null && !propertyName.isBlank() && propertyValue != null) {
+      if (allowedProperties.contains(propertyName)) {
+        System.out.println("Setting " + propertyName + "=" + propertyValue);
+        System.setProperty(propertyName, propertyValue);
+      } else {
+        System.out.println("WARNING: setSysProp.jsp - Attempt to set non-allowed property: " + propertyName);
+      }
+  	} 
 %>
 <html>
  <head>
